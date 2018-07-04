@@ -21,7 +21,7 @@ public class ModificarEstudianteView extends Dialog<EstudianteViewModel>{
 
 	@Override
 	protected void addActions(Panel mainPanel) {
-		new Button(mainPanel).setCaption("Guardar").onClick(this::accept).setAsDefault();		
+		new Button(mainPanel).setCaption("Guardar").onClick(this::actualizarDatos).setAsDefault();		
 		new Button(mainPanel).setCaption("Descartar").onClick(this::cancel);
 	}
 
@@ -41,6 +41,10 @@ public class ModificarEstudianteView extends Dialog<EstudianteViewModel>{
 		
 		new Label(mainPanel).setText("Github user");
 		new TextBox(mainPanel).bindValueToProperty("githubUser");
+	}
+	
+	public void actualizarDatos() {
+		this.getModelObject().actualizarDatosEstudiante();
 	}
 
 }

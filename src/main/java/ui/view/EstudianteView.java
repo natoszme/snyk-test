@@ -2,7 +2,6 @@ package ui.view;
 
 import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.layout.HorizontalLayout;
-import org.uqbar.arena.layout.Layout;
 import org.uqbar.arena.layout.VerticalLayout;
 import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
@@ -19,8 +18,8 @@ import ui.viewmodel.EstudianteViewModel;
 @SuppressWarnings("serial")
 public class EstudianteView extends MainWindow<Estudiante>{
 
-	public EstudianteView() {
-		super(new EstudianteViewModel(new Estudiante()));
+	public EstudianteView(Estudiante estudiante) {
+		super(new EstudianteViewModel(estudiante));
 	}
 
 	@Override
@@ -28,9 +27,7 @@ public class EstudianteView extends MainWindow<Estudiante>{
 		this.setTitle("Estudiante");
 		mainPanel.setLayout(new VerticalLayout());
 		
-		Panel perfilAlumnoPanel = new Panel(mainPanel).setLayout(new ColumnLayout(2));
-		
-		
+		Panel perfilAlumnoPanel = new Panel(mainPanel).setLayout(new ColumnLayout(2));	
 		Panel datosAlumnoPanel = new Panel(perfilAlumnoPanel).setLayout(new VerticalLayout());
 		
 		Panel panelNombre = new Panel(datosAlumnoPanel).setLayout(new HorizontalLayout());
@@ -65,7 +62,7 @@ public class EstudianteView extends MainWindow<Estudiante>{
 	}
 
 	public static void main(String[] args) {
-		new EstudianteView().startApplication();
+		new EstudianteView(new Estudiante("unAlumno", "suApellido", "lol125", 1152358)).startApplication();
 	}
 
 }

@@ -20,7 +20,16 @@ public class EstudianteViewModel extends Estudiante {
 	
 	private List<Calificacion> calificaciones = new ArrayList<>();
 	
+	public void actualizarDatosEstudiante() {
+		/*modelo.nombre = nombre;
+		modelo.apellido = apellido;
+		modelo.legajo = legajo;
+		modelo.githubUser = githubUser;*/
+	}
+	
 	public EstudianteViewModel(Estudiante modelo) {
+		//TODO reveer esto
+		super("", "", "", 0);
 		this.modelo = modelo;
 	}
 	
