@@ -2,19 +2,35 @@ package ui.view;
 
 import org.uqbar.commons.model.annotations.Observable;
 
+import model.estudiante.Estudiante;
+
 @Observable
 public class ModificarEstudianteViewModel {
 	private String nombre;
 	private String apellido;
 	private long legajo;
 	private String githubUser;
+	private Estudiante modelo;
 	
-	public ModificarEstudianteViewModel() {
-		
+	//TODO se puede evitar la asignacion default?
+	public ModificarEstudianteViewModel(Estudiante estudiante) {
+		modelo = estudiante;
+		nombre = modelo.nombre;
+		apellido = modelo.apellido;
+		legajo = modelo.legajo;
+		githubUser = modelo.githubUser;
+	}
+	
+	//TODO revisar esto
+	public void actualizarDatosEstudiante() {
+		modelo.nombre = nombre;
+		modelo.apellido = apellido;
+		modelo.legajo = legajo;
+		modelo.githubUser = githubUser;
 	}
 
 	public String getNombre() {
-		return nombre;
+		return modelo.nombre;
 	}
 
 	public void setNombre(String nombre) {
@@ -22,7 +38,7 @@ public class ModificarEstudianteViewModel {
 	}
 
 	public String getApellido() {
-		return apellido;
+		return modelo.apellido;
 	}
 
 	public void setApellido(String apellido) {
@@ -30,7 +46,7 @@ public class ModificarEstudianteViewModel {
 	}
 	
 	public long getLegajo() {
-		return legajo;
+		return modelo.legajo;
 	}
 
 	public void setLegajo(long legajo) {
@@ -38,7 +54,7 @@ public class ModificarEstudianteViewModel {
 	}
 
 	public String getGithubUser() {
-		return githubUser;
+		return modelo.githubUser;
 	}
 
 	public void setGithubUser(String githubUser) {

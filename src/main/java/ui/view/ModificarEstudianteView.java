@@ -8,15 +8,15 @@ import org.uqbar.arena.widgets.TextBox;
 import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.WindowOwner;
 
+import model.estudiante.Estudiante;
 import ui.viewmodel.EstudianteViewModel;
 
 //TODO por que rompe con un @Observable?
 @SuppressWarnings("serial")
-public class ModificarEstudianteView extends Dialog<EstudianteViewModel>{
-
-	public ModificarEstudianteView(WindowOwner parent) {
-		//TODO sacar este null
-		super(parent, new EstudianteViewModel(null));
+public class ModificarEstudianteView extends Dialog<ModificarEstudianteViewModel>{
+	
+	public ModificarEstudianteView(WindowOwner parent, ModificarEstudianteViewModel modificarEstudianteViewModel) {
+		super(parent, modificarEstudianteViewModel);
 	}
 
 	@Override
@@ -45,6 +45,7 @@ public class ModificarEstudianteView extends Dialog<EstudianteViewModel>{
 	
 	public void actualizarDatos() {
 		this.getModelObject().actualizarDatosEstudiante();
+		this.close();
 	}
 
 }

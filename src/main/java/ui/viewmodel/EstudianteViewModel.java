@@ -5,14 +5,15 @@ import java.util.List;
 
 import org.uqbar.commons.model.annotations.Observable;
 
-import estudiante.Calificacion;
-import estudiante.Estudiante;
-import estudiante.NotaNumerica;
+import model.estudiante.Calificacion;
+import model.estudiante.Estudiante;
 
 @Observable
-public class EstudianteViewModel extends Estudiante {
+public class EstudianteViewModel {
 
-	private Estudiante modelo;
+	//en principio no se usa
+	
+	/*private Estudiante modelo;
 	private String nombre;
 	private String apellido;
 	private long legajo;
@@ -21,15 +22,13 @@ public class EstudianteViewModel extends Estudiante {
 	private List<Calificacion> calificaciones = new ArrayList<>();
 	
 	public void actualizarDatosEstudiante() {
-		/*modelo.nombre = nombre;
-		modelo.apellido = apellido;
-		modelo.legajo = legajo;
-		modelo.githubUser = githubUser;*/
+		//modelo.nombre = nombre;
+		//modelo.apellido = apellido;
+		//modelo.legajo = legajo;
+		//modelo.githubUser = githubUser;
 	}
 	
 	public EstudianteViewModel(Estudiante modelo) {
-		//TODO reveer esto
-		super("", "", "", 0);
 		this.modelo = modelo;
 	}
 	
@@ -63,5 +62,5 @@ public class EstudianteViewModel extends Estudiante {
 
 	public void setGithubUser(String githubUser) {
 		this.githubUser = githubUser;
-	}
+	}*/
 }

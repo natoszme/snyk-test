@@ -10,16 +10,16 @@ import org.uqbar.arena.widgets.tree.Tree;
 import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.MainWindow;
 
-import estudiante.Calificacion;
-import estudiante.Estudiante;
-import ui.viewmodel.EstudianteViewModel;
+import model.estudiante.Calificacion;
+import model.estudiante.Estudiante;
 
 //TODO que hace?
 @SuppressWarnings("serial")
 public class EstudianteView extends MainWindow<Estudiante>{
 
 	public EstudianteView(Estudiante estudiante) {
-		super(new EstudianteViewModel(estudiante));
+		//TODO revisar esto, no hay viewModel
+		super(estudiante);
 	}
 
 	@Override
@@ -46,8 +46,9 @@ public class EstudianteView extends MainWindow<Estudiante>{
 		new Label(githubPanel).setText("Github user: ");
 		new Label(githubPanel).bindValueToProperty("githubUser");
 		
-		Panel modificarDatosPanel = new Panel(perfilAlumnoPanel);
-		new Button(modificarDatosPanel).setCaption("Modificar datos").onClick(this::modificarEstudiante);
+		//TODO por algun motivo dejo de tomar este panel
+		//Panel modificarDatosPanel = new Panel(perfilAlumnoPanel);
+		new Button(mainPanel).setCaption("Modificar datos").onClick(this::modificarEstudiante);
 		
 		new Label(mainPanel).setText("Calificaciones");
 		new Tree<Calificacion>(mainPanel).bindNodeToProperty("calificaciones");
@@ -56,13 +57,17 @@ public class EstudianteView extends MainWindow<Estudiante>{
 	}
 	
 	private void modificarEstudiante() {
-		Dialog<?> dialog = new ModificarEstudianteView(this);
+		//TODO revisar si se puede evitar mandar el modelObject
+		//TODO esta bien instanciado el ModificarEstudianteView? Es correcto instanciar el viewModel dede aca?
+		Dialog<?> dialog = new ModificarEstudianteView(this, new ModificarEstudianteViewModel(getModelObject()));
+		//en principio el accept no hace falta
 		//dialog.onAccept(action);
 		dialog.open();
 	}
 
+	//TODO vista intermedia que mande al estudiante a la vista actual
 	public static void main(String[] args) {
-		new EstudianteView(new Estudiante("unAlumno", "suApellido", "lol125", 1152358)).startApplication();
+		new EstudianteView(new Estudiante("unAlumno", "suApellido", "lol125", 115235)).startApplication();
 	}
 
 }
