@@ -18,7 +18,6 @@ import model.estudiante.Estudiante;
 public class EstudianteView extends MainWindow<Estudiante>{
 
 	public EstudianteView(Estudiante estudiante) {
-		//TODO revisar esto, no hay viewModel
 		super(estudiante);
 	}
 
@@ -57,11 +56,9 @@ public class EstudianteView extends MainWindow<Estudiante>{
 	}
 	
 	private void modificarEstudiante() {
-		//TODO revisar si se puede evitar mandar el modelObject
+		//TODO revisar si se puede evitar mandar el modelObject. que pasa si esta view tiene un viewmodel, y es él el que tiene el modelo?
 		//TODO esta bien instanciado el ModificarEstudianteView? Es correcto instanciar el viewModel dede aca?
 		Dialog<?> dialog = new ModificarEstudianteView(this, new ModificarEstudianteViewModel(getModelObject()));
-		//en principio el accept no hace falta
-		//dialog.onAccept(action);
 		dialog.open();
 	}
 

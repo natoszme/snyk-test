@@ -1,5 +1,6 @@
 package ui.view;
 
+import org.uqbar.arena.layout.HorizontalLayout;
 import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.NumericField;
@@ -30,17 +31,21 @@ public class ModificarEstudianteView extends Dialog<ModificarEstudianteViewModel
 	protected void createFormPanel(Panel mainPanel) {
 		this.setTitle("Modificar estudiante");
 		
-		new Label(mainPanel).setText("Nombre");
-		new TextBox(mainPanel).bindValueToProperty("nombre");
+		Panel panelNombre = new Panel(mainPanel).setLayout(new HorizontalLayout());
+		new Label(panelNombre).setText("Nombre: ");
+		new TextBox(panelNombre).bindValueToProperty("nombre");
 		
-		new Label(mainPanel).setText("Apellido");
-		new TextBox(mainPanel).bindValueToProperty("apellido");
+		Panel apeliidoPanel = new Panel(mainPanel).setLayout(new HorizontalLayout());
+		new Label(apeliidoPanel).setText("Apellido: ");
+		new TextBox(apeliidoPanel).bindValueToProperty("apellido");
 		
-		new Label(mainPanel).setText("Legajo");
-		new NumericField(mainPanel).bindValueToProperty("legajo");
+		Panel legajoPanel = new Panel(mainPanel).setLayout(new HorizontalLayout());
+		new Label(legajoPanel).setText("Legajo: ");
+		new NumericField(legajoPanel).bindValueToProperty("legajo");
 		
-		new Label(mainPanel).setText("Github user");
-		new TextBox(mainPanel).bindValueToProperty("githubUser");
+		Panel githubPanel = new Panel(mainPanel).setLayout(new HorizontalLayout());
+		new Label(githubPanel).setText("Github user: ");
+		new TextBox(githubPanel).bindValueToProperty("githubUser");
 	}
 	
 	public void actualizarDatos() {
