@@ -1,24 +1,30 @@
 package ui.view;
 
+import org.uqbar.arena.bindings.PropertyAdapter;
 import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.layout.HorizontalLayout;
 import org.uqbar.arena.layout.VerticalLayout;
 import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
-import org.uqbar.arena.widgets.tree.Tree;
+import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.MainWindow;
+import org.uqbar.commons.model.utils.ObservableUtils;
 
-import model.estudiante.Calificacion;
+import model.estudiante.AsignacionTarea;
 import model.estudiante.Estudiante;
+import model.estudiante.Nota;
+import model.estudiante.NotaNumerica;
+import model.estudiante.Tarea;
+import ui.viewmodel.EstudianteViewModel;
 
 //TODO que hace?
 @SuppressWarnings("serial")
-public class EstudianteView extends MainWindow<Estudiante>{
+public class EstudianteView extends MainWindow<EstudianteViewModel>{
 
-	public EstudianteView(Estudiante estudiante) {
-		super(estudiante);
+	public EstudianteView(EstudianteViewModel estudianteViewModel) {
+		super(estudianteViewModel);
 	}
 
 	@Override
@@ -50,21 +56,31 @@ public class EstudianteView extends MainWindow<Estudiante>{
 		new Button(mainPanel).setCaption("Modificar datos").onClick(this::modificarEstudiante);
 		
 		new Label(mainPanel).setText("Calificaciones");
-		new Tree<Calificacion>(mainPanel).bindNodeToProperty("calificaciones");
+		new Table<Nota>(mainPanel, Nota.class).
+			bindItemsToProperty("ultimasNotas");
+			//setAdapter(new PropertyAdapter(NotaNumerica.class, "valor"));
 		
 		new Button(mainPanel).setCaption("Salir").onClick(this::close);
 	}
 	
 	private void modificarEstudiante() {
-		//TODO revisar si se puede evitar mandar el modelObject. que pasa si esta view tiene un viewmodel, y es él el que tiene el modelo?
-		//TODO esta bien instanciado el ModificarEstudianteView? Es correcto instanciar el viewModel dede aca?
-		Dialog<?> dialog = new ModificarEstudianteView(this, new ModificarEstudianteViewModel(getModelObject()));
+		Dialog<?> dialog = new ModificarEstudianteView(this, new ModificarEstudianteViewModel(getModelObject().getEstudiante()));
+		dialog.onAccept(() -> {
+			ObservableUtils.firePropertyChanged(this.getModelObject(), "nombre");
+			ObservableUtils.firePropertyChanged(this.getModelObject(), "apellido");
+			ObservableUtils.firePropertyChanged(this.getModelObject(), "legajo");
+			ObservableUtils.firePropertyChanged(this.getModelObject(), "githubUser");
+		});
 		dialog.open();
 	}
 
 	//TODO vista intermedia que mande al estudiante a la vista actual
 	public static void main(String[] args) {
-		new EstudianteView(new Estudiante("unAlumno", "suApellido", "lol125", 115235)).startApplication();
+		Estudiante estudiante = new Estudiante("unAlumno", "suApellido", "lol125", 115235);
+		AsignacionTarea pruebaDeIngles = new AsignacionTarea(new Tarea("Prueba de ingles"));
+		pruebaDeIngles.calificar(new NotaNumerica(8));
+		estudiante.asignarTarea(pruebaDeIngles);
+		new EstudianteView(new EstudianteViewModel(estudiante)).startApplication();
 	}
 
 }

@@ -7,6 +7,10 @@ public class AsignacionTarea {
 	private Tarea tarea;
 	private List<Calificacion> calificaciones = new ArrayList<>();
 	
+	public AsignacionTarea(Tarea tarea) {
+		this.tarea = tarea;
+	}
+	
 	public void calificar(Nota nota) {
 		//TODO en principio lo validamos en la ui, pero... una buena forma de hacerlo por codigo?
 		//tarea.validarTipoNota(nota);
@@ -15,5 +19,9 @@ public class AsignacionTarea {
 	
 	public boolean aprobo() {
 		return calificaciones.stream().anyMatch(Calificacion::esAprobada);
+	}
+
+	public Nota ultimaNota() {
+		return calificaciones.get(calificaciones.size() - 1).nota();
 	}
 }
