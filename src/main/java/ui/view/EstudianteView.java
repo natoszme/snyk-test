@@ -57,8 +57,8 @@ public class EstudianteView extends MainWindow<EstudianteViewModel>{
 		
 		new Label(mainPanel).setText("Calificaciones");
 		new Table<Nota>(mainPanel, Nota.class).
-			bindItemsToProperty("ultimasNotas");
-			//setAdapter(new PropertyAdapter(NotaNumerica.class, "valor"));
+			bindItemsToProperty("ultimasNotas").
+			setAdapter(new PropertyAdapter(NotaNumerica.class, "valor"));
 		
 		new Button(mainPanel).setCaption("Salir").onClick(this::close);
 	}
