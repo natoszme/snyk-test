@@ -17,7 +17,7 @@ public class Estudiante {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.githubUser = githubUser;
-		this.legajo = legajo;
+		this.legajo = legajo;		
 	}
 
 	public String getNombre() {
@@ -50,5 +50,18 @@ public class Estudiante {
 
 	public void setLegajo(long legajo) {
 		this.legajo = legajo;
+	}
+	
+	public List<AsignacionTarea> getAsignaciones() {
+		return asignaciones;
+	}
+	
+	//TODO sin esto rompe: por que?
+	public void setAsignaciones(List<AsignacionTarea> asignaciones) {
+		this.asignaciones = asignaciones;
+	}
+	
+	public void asignarTarea(AsignacionTarea asignacion) {
+		asignaciones.add(asignacion);
 	}
 }

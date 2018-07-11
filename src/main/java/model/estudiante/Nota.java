@@ -1,5 +1,9 @@
 package model.estudiante;
 
-public interface Nota {
-	public boolean esAprobada();
+import org.uqbar.commons.model.annotations.Observable;
+
+//TODO por que es necesario?
+@Observable
+public abstract class Nota {
+	public abstract boolean esAprobada();
 }

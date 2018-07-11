@@ -2,46 +2,50 @@ package ui.viewmodel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.uqbar.commons.model.annotations.Observable;
 
 import model.estudiante.Calificacion;
 import model.estudiante.Estudiante;
+import model.estudiante.Nota;
+import model.estudiante.NotaNumerica;
 
 @Observable
 public class EstudianteViewModel {
 
 	//en principio no se usa
 	
-	/*private Estudiante modelo;
+	private Estudiante modelo;
 	private String nombre;
 	private String apellido;
 	private long legajo;
 	private String githubUser;
 	
-	private List<Calificacion> calificaciones = new ArrayList<>();
-	
-	public void actualizarDatosEstudiante() {
-		//modelo.nombre = nombre;
-		//modelo.apellido = apellido;
-		//modelo.legajo = legajo;
-		//modelo.githubUser = githubUser;
-	}
+	//private List<Calificacion> calificaciones = new ArrayList<>();
 	
 	public EstudianteViewModel(Estudiante modelo) {
 		this.modelo = modelo;
 	}
 	
+	private List<Nota> obtenerUltimasNotas(){
+		return modelo.getAsignaciones().stream().
+				map(asignacion -> asignacion.ultimaNota()).
+				collect(Collectors.toList());
+	}
+	
 	public String getNombre() {
-		return this.nombre;
+		System.out.println("get nombre");
+		return modelo.nombre;
 	}
 
 	public void setNombre(String nombre) {
+		System.out.println("set nombre");
 		this.nombre = nombre;
 	}
 
 	public String getApellido() {
-		return apellido;
+		return modelo.apellido;
 	}
 
 	public void setApellido(String apellido) {
@@ -49,7 +53,7 @@ public class EstudianteViewModel {
 	}
 	
 	public long getLegajo() {
-		return legajo;
+		return modelo.legajo;
 	}
 
 	public void setLegajo(long legajo) {
@@ -57,10 +61,18 @@ public class EstudianteViewModel {
 	}
 
 	public String getGithubUser() {
-		return githubUser;
+		return modelo.githubUser;
 	}
 
 	public void setGithubUser(String githubUser) {
 		this.githubUser = githubUser;
-	}*/
+	}
+	
+	public List<Nota> getUltimasNotas(){
+		return obtenerUltimasNotas();
+	}
+	
+	public Estudiante getEstudiante() {
+		return modelo;
+	}
 }

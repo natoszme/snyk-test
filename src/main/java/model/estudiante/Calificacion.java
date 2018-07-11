@@ -1,6 +1,7 @@
 package model.estudiante;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Calificacion {
 	
@@ -14,5 +15,9 @@ public class Calificacion {
 	
 	public boolean esAprobada() {
 		return nota.esAprobada();
+	}
+
+	public Nota nota() {
+		return nota;
 	}
 }

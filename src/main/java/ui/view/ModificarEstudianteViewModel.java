@@ -12,7 +12,7 @@ public class ModificarEstudianteViewModel {
 	private String githubUser;
 	private Estudiante modelo;
 	
-	//TODO se puede evitar la asignacion default?
+	//TODO se puede evitar la asignacion default? extendiendo a estudiante?
 	public ModificarEstudianteViewModel(Estudiante estudiante) {
 		modelo = estudiante;
 		nombre = modelo.nombre;

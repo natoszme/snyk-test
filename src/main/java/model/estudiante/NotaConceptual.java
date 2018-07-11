@@ -1,6 +1,6 @@
 package model.estudiante;
 
-public class NotaConceptual implements Nota{
+public class NotaConceptual extends Nota{
 	private EnumNotaConceptual nota;
 	
 	public boolean esAprobada() {
