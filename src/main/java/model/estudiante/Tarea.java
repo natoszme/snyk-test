@@ -7,6 +7,10 @@ public class Tarea {
 	public Tarea(String nombre) {
 		this.nombre = nombre;
 	}
+
+	public String nombre() {
+		return nombre;
+	}
 	
 	//TODO ver esto
 	/*public void validarTipoNota(Nota nota) {

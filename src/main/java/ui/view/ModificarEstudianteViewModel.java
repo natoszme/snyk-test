@@ -30,7 +30,7 @@ public class ModificarEstudianteViewModel {
 	}
 
 	public String getNombre() {
-		return modelo.nombre;
+		return nombre;
 	}
 
 	public void setNombre(String nombre) {
@@ -38,7 +38,7 @@ public class ModificarEstudianteViewModel {
 	}
 
 	public String getApellido() {
-		return modelo.apellido;
+		return apellido;
 	}
 
 	public void setApellido(String apellido) {
@@ -46,7 +46,7 @@ public class ModificarEstudianteViewModel {
 	}
 	
 	public long getLegajo() {
-		return modelo.legajo;
+		return legajo;
 	}
 
 	public void setLegajo(long legajo) {
@@ -54,7 +54,7 @@ public class ModificarEstudianteViewModel {
 	}
 
 	public String getGithubUser() {
-		return modelo.githubUser;
+		return githubUser;
 	}
 
 	public void setGithubUser(String githubUser) {

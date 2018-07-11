@@ -16,8 +16,8 @@ public class NotaNumerica extends Nota{
 		return valorNumerico >= 6.0;
 	}
 	
-	public double getValor() {
-		return valorNumerico;
+	public String getValor() {
+		return Double.toString(valorNumerico);
 	}
 	
 }

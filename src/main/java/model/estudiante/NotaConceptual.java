@@ -11,4 +11,13 @@ public class NotaConceptual extends Nota{
 	public boolean esValidaPara(boolean esTipoNumerica) {
 		return esTipoNumerica == true;
 	}
+	
+	public String getValor() {
+		return nota.name();
+	}
+	
+	public void setNota(EnumNotaConceptual nota) {
+		this.nota = nota;
+	}
+	
 }

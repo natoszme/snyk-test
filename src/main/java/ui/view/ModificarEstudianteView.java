@@ -48,7 +48,7 @@ public class ModificarEstudianteView extends Dialog<ModificarEstudianteViewModel
 	
 	public void actualizarDatos() {
 		this.getModelObject().actualizarDatosEstudiante();
-		this.close();
+		this.accept();
 	}
 
 }

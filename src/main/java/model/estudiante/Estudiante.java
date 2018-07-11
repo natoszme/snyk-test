@@ -19,7 +19,20 @@ public class Estudiante {
 		this.githubUser = githubUser;
 		this.legajo = legajo;		
 	}
-
+	
+	public List<AsignacionTarea> getAsignacionesTarea() {
+		return asignaciones;
+	}
+	
+	//TODO sin esto rompe: por que?
+	public void setAsignacionesTarea(List<AsignacionTarea> asignaciones) {
+		this.asignaciones = asignaciones;
+	}
+	
+	public void asignarTarea(AsignacionTarea asignacion) {
+		asignaciones.add(asignacion);
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -35,6 +48,14 @@ public class Estudiante {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
+	
+	public long getLegajo() {
+		return legajo;
+	}
+
+	public void setLegajo(long legajo) {
+		this.legajo = legajo;
+	}
 
 	public String getGithubUser() {
 		return githubUser;
@@ -43,25 +64,12 @@ public class Estudiante {
 	public void setGithubUser(String githubUser) {
 		this.githubUser = githubUser;
 	}
-
-	public long getLegajo() {
-		return legajo;
-	}
-
-	public void setLegajo(long legajo) {
-		this.legajo = legajo;
-	}
 	
-	public List<AsignacionTarea> getAsignaciones() {
+	public List<AsignacionTarea> getAsignaciones(){
 		return asignaciones;
 	}
-	
-	//TODO sin esto rompe: por que?
-	public void setAsignaciones(List<AsignacionTarea> asignaciones) {
+	public void setAsignaciones(List<AsignacionTarea> asignaciones){
 		this.asignaciones = asignaciones;
 	}
 	
-	public void asignarTarea(AsignacionTarea asignacion) {
-		asignaciones.add(asignacion);
-	}
 }
