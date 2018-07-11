@@ -9,6 +9,8 @@ import org.uqbar.arena.widgets.TextBox;
 import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.WindowOwner;
 
+import ui.viewmodel.ModificarEstudianteViewModel;
+
 //TODO por que rompe con un @Observable?
 @SuppressWarnings("serial")
 public class ModificarEstudianteView extends Dialog<ModificarEstudianteViewModel>{

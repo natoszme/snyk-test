@@ -1,4 +1,4 @@
-package ui.view;
+package ui.viewmodel;
 
 import org.uqbar.commons.model.annotations.Observable;
 

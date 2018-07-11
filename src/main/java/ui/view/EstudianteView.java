@@ -12,6 +12,8 @@ import org.uqbar.arena.widgets.tables.Column;
 import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.MainWindow;
+import org.uqbar.arena.windows.SimpleWindow;
+import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.commons.model.utils.ObservableUtils;
 
 import model.estudiante.AsignacionTarea;
@@ -22,17 +24,38 @@ import model.estudiante.NotaConceptual;
 import model.estudiante.NotaNumerica;
 import model.estudiante.Tarea;
 import ui.viewmodel.EstudianteViewModel;
+import ui.viewmodel.ModificarEstudianteViewModel;
 
 //TODO que hace?
 @SuppressWarnings("serial")
-public class EstudianteView extends MainWindow<Estudiante>{
+public class EstudianteView extends SimpleWindow<Estudiante>{
 
-	public EstudianteView(Estudiante estudiante) {
-		super(estudiante);
+	public EstudianteView(WindowOwner parent, Estudiante estudiante) {
+		super(parent, estudiante);
+	}
+
+	
+	
+	private void modificarEstudiante() {
+		Dialog<?> dialog = new ModificarEstudianteView(this, new ModificarEstudianteViewModel(getModelObject()));
+		//TODO Como hacer sin fireProperty?
+		dialog.onAccept(() -> {
+			ObservableUtils.firePropertyChanged(this.getModelObject(), "nombre");
+			ObservableUtils.firePropertyChanged(this.getModelObject(), "apellido");
+			ObservableUtils.firePropertyChanged(this.getModelObject(), "legajo");
+			ObservableUtils.firePropertyChanged(this.getModelObject(), "githubUser"); 
+		});
+		dialog.open();
 	}
 
 	@Override
-	public void createContents(Panel mainPanel) {
+	protected void addActions(Panel mainPanel) {
+
+		
+	}
+
+	@Override
+	protected void createFormPanel(Panel mainPanel) {
 		this.setTitle("Estudiante");
 		mainPanel.setLayout(new VerticalLayout());
 		
@@ -77,21 +100,11 @@ public class EstudianteView extends MainWindow<Estudiante>{
 	    .bindContentsToProperty("aprobo");
 		
 		new Button(mainPanel).setCaption("Salir").onClick(this::close);
-	}
-	
-	private void modificarEstudiante() {
-		Dialog<?> dialog = new ModificarEstudianteView(this, new ModificarEstudianteViewModel(getModelObject()));
-		dialog.onAccept(() -> {
-			ObservableUtils.firePropertyChanged(this.getModelObject(), "nombre");
-			ObservableUtils.firePropertyChanged(this.getModelObject(), "apellido");
-			ObservableUtils.firePropertyChanged(this.getModelObject(), "legajo");
-			ObservableUtils.firePropertyChanged(this.getModelObject(), "githubUser"); //TODO Como hacer sin fireProperty?
-		});
-		dialog.open();
+		
 	}
 
 	//TODO vista intermedia que mande al estudiante a la vista actual
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		Estudiante estudiante = new Estudiante("unAlumno", "suApellido", "lol125", 115235);
 		AsignacionTarea pruebaDeIngles = new AsignacionTarea(new Tarea("Prueba de ingles"));
 		pruebaDeIngles.calificar(new NotaNumerica(8));
@@ -112,6 +125,6 @@ public class EstudianteView extends MainWindow<Estudiante>{
 		estudiante.asignarTarea(pruebaDeIngles);
 		estudiante.asignarTarea(tpArena);
 		new EstudianteView(estudiante).startApplication();
-	}
+	}*/
 
 }
