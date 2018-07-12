@@ -13,6 +13,11 @@ public class Fixture {
 	static Fixture instancia = null;
 	protected RepoEstudiantes repo;
 	protected Estudiante estudiante;
+	protected AsignacionTarea pruebaDeIngles;
+	protected AsignacionTarea tpOperativos;
+	protected AsignacionTarea tpArena;
+	protected NotaConceptual mal;
+	protected NotaConceptual bien;
 	public static Fixture getInstance() {
 		if(instancia==null)
 			return new Fixture();
@@ -27,18 +32,18 @@ public class Fixture {
 		repo = RepoEstudiantes.getInstance();
 		
 		estudiante = new Estudiante("Pepe", "Sanchez", "pepeCapo123", 111111);
-		AsignacionTarea pruebaDeIngles = new AsignacionTarea(new Tarea("Prueba de ingles"));
+		pruebaDeIngles = new AsignacionTarea(new Tarea("Prueba de ingles"));
 		pruebaDeIngles.calificar(new NotaNumerica(8));
-		NotaConceptual bien = new NotaConceptual();
+		bien = new NotaConceptual();
 		bien.setNota(EnumNotaConceptual.BIEN);
-		AsignacionTarea tpOperativos = new AsignacionTarea(new Tarea("TP Operativos"));
+	    tpOperativos = new AsignacionTarea(new Tarea("TP Operativos"));
 		tpOperativos.calificar(bien);
 		
 		AsignacionTarea pruebaDeLegislacion = new AsignacionTarea(new Tarea("Legislacion"));
 		pruebaDeLegislacion.calificar(new NotaNumerica(3));
-		NotaConceptual mal = new NotaConceptual();
+	    mal = new NotaConceptual();
 		mal.setNota(EnumNotaConceptual.MAL);
-		AsignacionTarea tpArena = new AsignacionTarea(new Tarea("TP Arena"));
+	    tpArena = new AsignacionTarea(new Tarea("TP Arena"));
 		tpArena.calificar(mal);
 		
 		estudiante.asignarTarea(pruebaDeLegislacion);
