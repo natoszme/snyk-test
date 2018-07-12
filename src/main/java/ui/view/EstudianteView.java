@@ -1,7 +1,5 @@
 package ui.view;
 
-import org.apache.commons.collections15.Transformer;
-import org.uqbar.arena.bindings.PropertyAdapter;
 import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.layout.HorizontalLayout;
 import org.uqbar.arena.layout.VerticalLayout;
@@ -11,20 +9,12 @@ import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.tables.Column;
 import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.Dialog;
-import org.uqbar.arena.windows.ErrorsPanel;
-import org.uqbar.arena.windows.MainWindow;
 import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.commons.model.utils.ObservableUtils;
 
 import model.estudiante.AsignacionTarea;
-import model.estudiante.EnumNotaConceptual;
 import model.estudiante.Estudiante;
-import model.estudiante.Nota;
-import model.estudiante.NotaConceptual;
-import model.estudiante.NotaNumerica;
-import model.estudiante.Tarea;
-import ui.viewmodel.EstudianteViewModel;
 import ui.viewmodel.ModificarEstudianteViewModel;
 
 //TODO que hace?
@@ -45,12 +35,6 @@ public class EstudianteView extends SimpleWindow<Estudiante>{
 			ObservableUtils.firePropertyChanged(this.getModelObject(), "githubUser"); 
 		});
 		dialog.open();
-	}
-
-	@Override
-	protected void addActions(Panel mainPanel) {
-
-		
 	}
 
 	@Override
@@ -98,7 +82,13 @@ public class EstudianteView extends SimpleWindow<Estudiante>{
 	    .setTitle("Aprobo")
 	    .bindContentsToProperty("aprobo");
 		
-		new Button(mainPanel).setCaption("Salir").onClick(this::close);
 		
+		
+	}
+
+	//TODO y que pasa si quiero usar un panel de los de arriba?
+	@Override
+	protected void addActions(Panel mainPanel) {
+		new Button(mainPanel).setCaption("Salir").onClick(this::close);		
 	}
 }
