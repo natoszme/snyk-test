@@ -21,8 +21,10 @@ public class HomeViewModel {
 	
 	public void ingresarSiPuede(WindowOwner homeView) {
 		RepoEstudiantes repo = RepoEstudiantes.getInstance();
+
 		Estudiante estudiante = repo.obtenerEstudiantePorLegajo(legajo);
 		loginEstudiante(homeView, estudiante);
+
 	}	 
 	
 	//TODO chequear esto: se puede evitar el homeView?
