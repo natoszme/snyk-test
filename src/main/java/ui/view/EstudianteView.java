@@ -1,7 +1,5 @@
 package ui.view;
 
-import org.apache.commons.collections15.Transformer;
-import org.uqbar.arena.bindings.PropertyAdapter;
 import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.layout.HorizontalLayout;
 import org.uqbar.arena.layout.VerticalLayout;
@@ -11,19 +9,12 @@ import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.tables.Column;
 import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.Dialog;
-import org.uqbar.arena.windows.MainWindow;
 import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.commons.model.utils.ObservableUtils;
 
 import model.estudiante.AsignacionTarea;
-import model.estudiante.EnumNotaConceptual;
 import model.estudiante.Estudiante;
-import model.estudiante.Nota;
-import model.estudiante.NotaConceptual;
-import model.estudiante.NotaNumerica;
-import model.estudiante.Tarea;
-import ui.viewmodel.EstudianteViewModel;
 import ui.viewmodel.ModificarEstudianteViewModel;
 
 //TODO que hace?
@@ -33,8 +24,6 @@ public class EstudianteView extends SimpleWindow<Estudiante>{
 	public EstudianteView(WindowOwner parent, Estudiante estudiante) {
 		super(parent, estudiante);
 	}
-
-	
 	
 	private void modificarEstudiante() {
 		Dialog<?> dialog = new ModificarEstudianteView(this, new ModificarEstudianteViewModel(getModelObject()));
@@ -46,12 +35,6 @@ public class EstudianteView extends SimpleWindow<Estudiante>{
 			ObservableUtils.firePropertyChanged(this.getModelObject(), "githubUser"); 
 		});
 		dialog.open();
-	}
-
-	@Override
-	protected void addActions(Panel mainPanel) {
-
-		
 	}
 
 	@Override
@@ -83,10 +66,10 @@ public class EstudianteView extends SimpleWindow<Estudiante>{
 		new Button(mainPanel).setCaption("Modificar datos").onClick(this::modificarEstudiante);
 		
 		new Label(mainPanel).setText("Notas");
-		Table<AsignacionTarea> tablaAsignacionesTarea = new Table<AsignacionTarea>(mainPanel, AsignacionTarea.class);
-		tablaAsignacionesTarea.bindItemsToProperty("asignacionesTarea");
+		Table<AsignacionTarea> tablaAsignacionesTarea = new Table<AsignacionTarea>(mainPanel, AsignacionTarea.class).
+				setNumberVisibleRows(6);
+		tablaAsignacionesTarea.bindItemsToProperty("asignaciones");
 	
-		
 		new Column<AsignacionTarea>(tablaAsignacionesTarea) 
 	    .setTitle("Tarea")
 	    .bindContentsToProperty("nombreTarea");
@@ -98,33 +81,11 @@ public class EstudianteView extends SimpleWindow<Estudiante>{
 		new Column<AsignacionTarea>(tablaAsignacionesTarea) 
 	    .setTitle("Aprobo")
 	    .bindContentsToProperty("aprobo");
-		
-		new Button(mainPanel).setCaption("Salir").onClick(this::close);
-		
 	}
 
-	//TODO vista intermedia que mande al estudiante a la vista actual
-	/*public static void main(String[] args) {
-		Estudiante estudiante = new Estudiante("unAlumno", "suApellido", "lol125", 115235);
-		AsignacionTarea pruebaDeIngles = new AsignacionTarea(new Tarea("Prueba de ingles"));
-		pruebaDeIngles.calificar(new NotaNumerica(8));
-		NotaConceptual bien = new NotaConceptual();
-		bien.setNota(EnumNotaConceptual.BIEN);
-		AsignacionTarea tpOperativos = new AsignacionTarea(new Tarea("TP Operativos"));
-		tpOperativos.calificar(bien);
-		
-		AsignacionTarea pruebaDeLegislacion = new AsignacionTarea(new Tarea("Legislacion"));
-		pruebaDeLegislacion.calificar(new NotaNumerica(3));
-		NotaConceptual mal = new NotaConceptual();
-		mal.setNota(EnumNotaConceptual.MAL);
-		AsignacionTarea tpArena = new AsignacionTarea(new Tarea("TP Arena"));
-		tpArena.calificar(mal);
-		
-		estudiante.asignarTarea(pruebaDeLegislacion);
-		estudiante.asignarTarea(tpOperativos);
-		estudiante.asignarTarea(pruebaDeIngles);
-		estudiante.asignarTarea(tpArena);
-		new EstudianteView(estudiante).startApplication();
-	}*/
-
+	//TODO y que pasa si quiero usar un panel de los de arriba?
+	@Override
+	protected void addActions(Panel mainPanel) {
+		new Button(mainPanel).setCaption("Salir").onClick(this::close);		
+	}
 }

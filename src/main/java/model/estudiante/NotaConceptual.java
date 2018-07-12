@@ -13,7 +13,7 @@ public class NotaConceptual extends Nota{
 	}
 	
 	public String getValor() {
-		return nota.name();
+		return nota.name().toLowerCase();
 	}
 	
 	public void setNota(EnumNotaConceptual nota) {

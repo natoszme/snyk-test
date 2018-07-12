@@ -20,12 +20,12 @@ public class Estudiante {
 		this.legajo = legajo;		
 	}
 	
-	public List<AsignacionTarea> getAsignacionesTarea() {
+	public List<AsignacionTarea> getAsignaciones(){
 		return asignaciones;
 	}
 	
 	//TODO sin esto rompe: por que?
-	public void setAsignacionesTarea(List<AsignacionTarea> asignaciones) {
+	public void setAsignaciones(List<AsignacionTarea> asignaciones){
 		this.asignaciones = asignaciones;
 	}
 	
@@ -64,12 +64,4 @@ public class Estudiante {
 	public void setGithubUser(String githubUser) {
 		this.githubUser = githubUser;
 	}
-	
-	public List<AsignacionTarea> getAsignaciones(){
-		return asignaciones;
-	}
-	public void setAsignaciones(List<AsignacionTarea> asignaciones){
-		this.asignaciones = asignaciones;
-	}
-	
 }

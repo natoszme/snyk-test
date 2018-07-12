@@ -52,5 +52,4 @@ public class ModificarEstudianteView extends Dialog<ModificarEstudianteViewModel
 		this.getModelObject().actualizarDatosEstudiante();
 		this.accept();
 	}
-
 }

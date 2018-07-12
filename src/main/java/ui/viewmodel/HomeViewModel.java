@@ -2,10 +2,8 @@ package ui.viewmodel;
 
 import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.commons.model.annotations.Observable;
-import org.uqbar.commons.model.exceptions.UserException;
 
 import model.estudiante.Estudiante;
-import model.estudiante.LegajoInexistenteException;
 import repositorios.RepoEstudiantes;
 import ui.view.EstudianteView;
 
@@ -23,12 +21,10 @@ public class HomeViewModel {
 	
 	public void ingresarSiPuede(WindowOwner homeView) {
 		RepoEstudiantes repo = RepoEstudiantes.getInstance();
-		try{
-			Estudiante estudiante = repo.obtenerEstudiantePorLegajo(this.getLegajo());
-			loginEstudiante(homeView, estudiante);
-		}catch(LegajoInexistenteException e) {
-			throw new UserException("Legajo inexistente");
-		}
+
+		Estudiante estudiante = repo.obtenerEstudiantePorLegajo(legajo);
+		loginEstudiante(homeView, estudiante);
+
 	}	 
 	
 	//TODO chequear esto: se puede evitar el homeView?

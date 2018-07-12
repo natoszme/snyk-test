@@ -14,7 +14,6 @@ import org.uqbar.arena.windows.WindowOwner;
 
 import fixture.Fixture;
 import model.estudiante.Estudiante;
-import model.estudiante.LegajoInexistenteException;
 import repositorios.RepoEstudiantes;
 
 public class TestHomeViewModel extends Fixture {	
@@ -24,7 +23,7 @@ public class TestHomeViewModel extends Fixture {
 		assertEquals("Prueba",repo.obtenerEstudiantePorLegajo(111111).getNombre());
 	}
 	
-	@Test (expected = LegajoInexistenteException.class)
+	@Test (expected = repositorios.LegajoInexistenteException.class)
 	public void ElLegajo2345TiraErrorSiIntentoTraerEstudiante() {
 		repo.obtenerEstudiantePorLegajo(2345);
 	}

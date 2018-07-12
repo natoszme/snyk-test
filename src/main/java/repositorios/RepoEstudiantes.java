@@ -3,7 +3,6 @@ package repositorios;
 import java.util.ArrayList;
 
 import model.estudiante.Estudiante;
-import model.estudiante.LegajoInexistenteException;
 
 
 public class RepoEstudiantes {
@@ -11,7 +10,6 @@ public class RepoEstudiantes {
 	private static RepoEstudiantes instancia;
 	
 	protected ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
-
 	
 	public static RepoEstudiantes getInstance() {
 		if (instancia == null) {
