@@ -7,6 +7,7 @@ import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.TextBox;
 import org.uqbar.arena.windows.MainWindow;
 
+import fixture.Fixture;
 import model.estudiante.AsignacionTarea;
 import model.estudiante.EnumNotaConceptual;
 import model.estudiante.Estudiante;
@@ -42,28 +43,7 @@ public class HomeView extends MainWindow<HomeViewModel>{
 	}
 	
 	public static void main(String[] args) {
-		Estudiante estudiante = new Estudiante("unAlumno", "suApellido", "lol125", 111111);
-		AsignacionTarea pruebaDeIngles = new AsignacionTarea(new Tarea("Prueba de ingles"));
-		pruebaDeIngles.calificar(new NotaNumerica(8));
-		NotaConceptual bien = new NotaConceptual();
-		bien.setNota(EnumNotaConceptual.BIEN);
-		AsignacionTarea tpOperativos = new AsignacionTarea(new Tarea("TP Operativos"));
-		tpOperativos.calificar(bien);
-		
-		AsignacionTarea pruebaDeLegislacion = new AsignacionTarea(new Tarea("Legislacion"));
-		pruebaDeLegislacion.calificar(new NotaNumerica(3));
-		NotaConceptual mal = new NotaConceptual();
-		mal.setNota(EnumNotaConceptual.MAL);
-		AsignacionTarea tpArena = new AsignacionTarea(new Tarea("TP Arena"));
-		tpArena.calificar(mal);
-		
-		estudiante.asignarTarea(pruebaDeLegislacion);
-		estudiante.asignarTarea(tpOperativos);
-		estudiante.asignarTarea(pruebaDeIngles);
-		estudiante.asignarTarea(tpArena);
-		
-		RepoEstudiantes repo = RepoEstudiantes.getInstance();
-		repo.agregarEstudiante(estudiante);
+		Fixture.getInstance();
 		
 		HomeViewModel viewModel = new HomeViewModel();
 		new HomeView(viewModel).startApplication();
