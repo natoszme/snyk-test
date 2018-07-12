@@ -20,10 +20,6 @@ public class AsignacionTarea {
 		notas.add(nota);
 	}
 	
-	public boolean aprobo() {
-		return notas.stream().anyMatch(Nota::esAprobada);
-	}
-	
 	public List<Nota> getNotas() {
 		return notas;
 	}
@@ -32,8 +28,19 @@ public class AsignacionTarea {
 		this.notas = notas;
 	}
 
+	//TODO Esto no esta bien, estamos acomplando el modelo con la view
 	public String getUltimaNota() {
-		return notas.get(notas.size() - 1).getValor(); //TODO Esto no esta bien, estamos acomplando el modelo con la view
+		return notas.get(notas.size() - 1).getValor();
+	}
+	
+	public boolean aprobo() {
+		return notas.stream().anyMatch(Nota::esAprobada);
+	}
+	
+	//idem aca
+	public String getAprobo() {
+		if (aprobo()) return "si";
+		return "no";
 	}
 	
 	public String getNombreTarea() {

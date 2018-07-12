@@ -10,7 +10,7 @@ public class TestHomeViewModel extends Fixture {
 	
 	@Test
 	public void ElLegajo111111TraeAlEstudianteConNombrePrueba() {
-		assertEquals("Prueba",repo.obtenerEstudiantePorLegajo(111111).getNombre());
+		assertEquals("Pepe", repo.obtenerEstudiantePorLegajo(111111).getNombre());
 	}
 	
 	@Test (expected = repositorios.LegajoInexistenteException.class)

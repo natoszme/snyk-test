@@ -26,7 +26,7 @@ public class Fixture {
 	public void fixture() {
 		repo = RepoEstudiantes.getInstance();
 		
-		estudiante = new Estudiante("Prueba", "suApellido", "lol125", 111111);
+		estudiante = new Estudiante("Pepe", "Sanchez", "pepeCapo123", 111111);
 		AsignacionTarea pruebaDeIngles = new AsignacionTarea(new Tarea("Prueba de ingles"));
 		pruebaDeIngles.calificar(new NotaNumerica(8));
 		NotaConceptual bien = new NotaConceptual();

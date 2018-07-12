@@ -7,7 +7,7 @@ import org.uqbar.commons.model.annotations.Observable;
 import model.estudiante.AsignacionTarea;
 import model.estudiante.Estudiante;
 
-//TODO esta bien prescindir de este viewmode? porque la obtencion de la ultima nota (motivo por el cual estaba este view model) se hace en la asignacion tarea
+//TODO esta bien prescindir de este viewmodel? porque la obtencion de la ultima nota (motivo por el cual estaba este view model) se hace en la asignacion tarea
 @Observable
 public class EstudianteViewModel {
 
