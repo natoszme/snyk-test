@@ -1,28 +1,14 @@
 package ui.view;
 
-import org.uqbar.commons.model.annotations.Observable;
 import org.uqbar.commons.model.exceptions.UserException;
 
 import java.awt.Color;
-import java.awt.TextField;
-
-import org.apache.commons.collections15.Transformer;
-import org.eclipse.ui.internal.Model;
-import org.uqbar.arena.bindings.PropertyAdapter;
-import org.uqbar.arena.layout.ColumnLayout;
-import org.uqbar.arena.layout.HorizontalLayout;
 import org.uqbar.arena.layout.VerticalLayout;
 import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.TextBox;
-import org.uqbar.arena.widgets.tables.Column;
-import org.uqbar.arena.widgets.tables.Table;
-import org.uqbar.arena.windows.Dialog;
-import org.uqbar.arena.windows.ErrorsPanel;
 import org.uqbar.arena.windows.MainWindow;
-import org.uqbar.arena.windows.SimpleWindow;
-import org.uqbar.commons.model.utils.ObservableUtils;
 
 import model.estudiante.AsignacionTarea;
 import model.estudiante.EnumNotaConceptual;
@@ -33,9 +19,6 @@ import model.estudiante.NotaNumerica;
 import model.estudiante.Tarea;
 import repositorios.RepoEstudiantes;
 import ui.viewmodel.HomeViewModel;
-import ui.viewmodel.ModificarEstudianteViewModel;
-
-
 
 //TODO que hace?
 @SuppressWarnings("serial")
@@ -83,8 +66,6 @@ public class HomeView extends MainWindow<HomeViewModel>{
 		new EstudianteView(this,estudiante).open();
 	}
 	
-
-	//TODO vista intermedia que mande al estudiante a la vista actual
 	public static void main(String[] args) {
 		Estudiante estudiante = new Estudiante("unAlumno", "suApellido", "lol125", 111111);
 		AsignacionTarea pruebaDeIngles = new AsignacionTarea(new Tarea("Prueba de ingles"));
