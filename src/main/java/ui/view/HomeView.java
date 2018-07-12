@@ -57,7 +57,7 @@ public class HomeView extends MainWindow<HomeViewModel>{
 	}
 	
 	public static void main(String[] args) {
-		Fixture.getInstance();
+		new Fixture().fixture();
 		
 		HomeViewModel viewModel = new HomeViewModel();
 		new HomeView(viewModel).startApplication();

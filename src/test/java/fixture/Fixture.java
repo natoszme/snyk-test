@@ -1,7 +1,5 @@
 package fixture;
 
-import org.mockito.Mock;
-
 import model.estudiante.AsignacionTarea;
 import model.estudiante.EnumNotaConceptual;
 import model.estudiante.Estudiante;
@@ -21,10 +19,12 @@ public class Fixture {
 		
 		return instancia;
 	}
-	public  Fixture() {
-		
+	public Fixture() {
+		fixture();
+	}
+	
+	public void fixture() {
 		repo = RepoEstudiantes.getInstance();
-
 		
 		estudiante = new Estudiante("Prueba", "suApellido", "lol125", 111111);
 		AsignacionTarea pruebaDeIngles = new AsignacionTarea(new Tarea("Prueba de ingles"));
@@ -44,13 +44,9 @@ public class Fixture {
 		estudiante.asignarTarea(pruebaDeLegislacion);
 		estudiante.asignarTarea(tpOperativos);
 		estudiante.asignarTarea(pruebaDeIngles);
-		estudiante.asignarTarea(tpArena);
-		
+		estudiante.asignarTarea(tpArena);		
 		
 		repo.agregarEstudiante(estudiante);
-		
-		
-		
 	}
 	
 }
