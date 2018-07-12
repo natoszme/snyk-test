@@ -1,8 +1,5 @@
 package ui.view;
 
-import org.uqbar.commons.model.exceptions.UserException;
-
-import java.awt.Color;
 import org.uqbar.arena.layout.VerticalLayout;
 import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
@@ -13,7 +10,6 @@ import org.uqbar.arena.windows.MainWindow;
 import model.estudiante.AsignacionTarea;
 import model.estudiante.EnumNotaConceptual;
 import model.estudiante.Estudiante;
-import model.estudiante.LegajoInexistenteException;
 import model.estudiante.NotaConceptual;
 import model.estudiante.NotaNumerica;
 import model.estudiante.Tarea;
@@ -37,25 +33,12 @@ public class HomeView extends MainWindow<HomeViewModel>{
 		
 		new TextBox(mainPanel).bindValueToProperty("legajo");
 		
-		new Label(mainPanel).setText("").setForeground(new Color(155, 0, 0));
+		new Label(mainPanel).setText("");
 		
-		new Button(mainPanel).setCaption("Ingresar").onClick(this::ingresarSiPuede);
+		//TODO por que funciona con los '::'? (cuando no se pasaba ningun parametro)
+		new Button(mainPanel).setCaption("Ingresar").onClick(() -> {getModelObject().ingresarSiPuede(this);});
 		
 		new Button(mainPanel).setCaption("Salir").onClick(this::close);
-	}
-	
-	public void ingresarSiPuede() {
-		RepoEstudiantes repo = RepoEstudiantes.getInstance();
-		try{
-			Estudiante estudiante = repo.obtenerEstudiantePorLegajo(getModelObject().getLegajo());
-			loginEstudiante(estudiante);
-		}catch(LegajoInexistenteException e) {
-			throw new UserException("Legajo inexistente");
-		}
-	}	 
-	
-	private void loginEstudiante(Estudiante estudiante) {
-		new EstudianteView(this,estudiante).open();
 	}
 	
 	public static void main(String[] args) {
@@ -81,7 +64,6 @@ public class HomeView extends MainWindow<HomeViewModel>{
 		
 		RepoEstudiantes repo = RepoEstudiantes.getInstance();
 		repo.agregarEstudiante(estudiante);
-		
 		
 		HomeViewModel viewModel = new HomeViewModel();
 		new HomeView(viewModel).startApplication();
