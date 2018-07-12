@@ -11,6 +11,7 @@ import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.tables.Column;
 import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.Dialog;
+import org.uqbar.arena.windows.ErrorsPanel;
 import org.uqbar.arena.windows.MainWindow;
 import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
@@ -102,29 +103,4 @@ public class EstudianteView extends SimpleWindow<Estudiante>{
 		new Button(mainPanel).setCaption("Salir").onClick(this::close);
 		
 	}
-
-	//TODO vista intermedia que mande al estudiante a la vista actual
-	/*public static void main(String[] args) {
-		Estudiante estudiante = new Estudiante("unAlumno", "suApellido", "lol125", 115235);
-		AsignacionTarea pruebaDeIngles = new AsignacionTarea(new Tarea("Prueba de ingles"));
-		pruebaDeIngles.calificar(new NotaNumerica(8));
-		NotaConceptual bien = new NotaConceptual();
-		bien.setNota(EnumNotaConceptual.BIEN);
-		AsignacionTarea tpOperativos = new AsignacionTarea(new Tarea("TP Operativos"));
-		tpOperativos.calificar(bien);
-		
-		AsignacionTarea pruebaDeLegislacion = new AsignacionTarea(new Tarea("Legislacion"));
-		pruebaDeLegislacion.calificar(new NotaNumerica(3));
-		NotaConceptual mal = new NotaConceptual();
-		mal.setNota(EnumNotaConceptual.MAL);
-		AsignacionTarea tpArena = new AsignacionTarea(new Tarea("TP Arena"));
-		tpArena.calificar(mal);
-		
-		estudiante.asignarTarea(pruebaDeLegislacion);
-		estudiante.asignarTarea(tpOperativos);
-		estudiante.asignarTarea(pruebaDeIngles);
-		estudiante.asignarTarea(tpArena);
-		new EstudianteView(estudiante).startApplication();
-	}*/
-
 }

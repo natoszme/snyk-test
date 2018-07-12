@@ -7,6 +7,7 @@ import org.uqbar.arena.widgets.NumericField;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.TextBox;
 import org.uqbar.arena.windows.Dialog;
+import org.uqbar.arena.windows.ErrorsPanel;
 import org.uqbar.arena.windows.WindowOwner;
 
 import ui.viewmodel.ModificarEstudianteViewModel;
@@ -52,5 +53,4 @@ public class ModificarEstudianteView extends Dialog<ModificarEstudianteViewModel
 		this.getModelObject().actualizarDatosEstudiante();
 		this.accept();
 	}
-
 }

@@ -1,4 +1,4 @@
-package model.estudiante;
+package repositorios;
 
 public class LegajoInexistenteException extends RuntimeException {
 
