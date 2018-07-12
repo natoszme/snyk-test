@@ -58,7 +58,7 @@ public class EstudianteView extends SimpleWindow<Estudiante>{
 		//Panel modificarDatosPanel = new Panel(perfilAlumnoPanel);
 		new Button(mainPanel).setCaption("Modificar datos").onClick(this::modificarEstudiante);
 		
-		new Label(mainPanel).setText("Notas");
+		new Label(mainPanel).setText("Notas").alignLeft();
 		Table<AsignacionTarea> tablaAsignacionesTarea = new Table<AsignacionTarea>(mainPanel, AsignacionTarea.class).
 				setNumberVisibleRows(6);
 		tablaAsignacionesTarea.bindItemsToProperty("asignaciones");
