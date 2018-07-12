@@ -1,17 +1,13 @@
 package ui.viewmodel;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.uqbar.commons.model.annotations.Observable;
 
 import model.estudiante.AsignacionTarea;
-import model.estudiante.Calificacion;
 import model.estudiante.Estudiante;
-import model.estudiante.Nota;
-import model.estudiante.NotaNumerica;
 
+//TODO esta bien prescindir de este viewmode? porque la obtencion de la ultima nota (motivo por el cual estaba este view model) se hace en la asignacion tarea
 @Observable
 public class EstudianteViewModel {
 
@@ -25,7 +21,7 @@ public class EstudianteViewModel {
 	
 	public List<AsignacionTarea> getAsignacionesTarea(){
 		System.out.println("get asignaciones tarea");
-		return modelo.getAsignacionesTarea();
+		return modelo.getAsignaciones();
 	}
 	
 	/*

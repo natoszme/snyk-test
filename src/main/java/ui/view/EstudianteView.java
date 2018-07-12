@@ -68,7 +68,7 @@ public class EstudianteView extends SimpleWindow<Estudiante>{
 		new Label(mainPanel).setText("Notas");
 		Table<AsignacionTarea> tablaAsignacionesTarea = new Table<AsignacionTarea>(mainPanel, AsignacionTarea.class).
 				setNumberVisibleRows(6);
-		tablaAsignacionesTarea.bindItemsToProperty("asignacionesTarea");
+		tablaAsignacionesTarea.bindItemsToProperty("asignaciones");
 	
 		new Column<AsignacionTarea>(tablaAsignacionesTarea) 
 	    .setTitle("Tarea")
@@ -81,9 +81,6 @@ public class EstudianteView extends SimpleWindow<Estudiante>{
 		new Column<AsignacionTarea>(tablaAsignacionesTarea) 
 	    .setTitle("Aprobo")
 	    .bindContentsToProperty("aprobo");
-		
-		
-		
 	}
 
 	//TODO y que pasa si quiero usar un panel de los de arriba?

@@ -29,7 +29,6 @@ public class AsignacionTarea {
 	}
 	
 	public void setNotas(List<Nota> notas) {
-		System.out.println("set notas de asignacion de tarea");
 		this.notas = notas;
 	}
 
