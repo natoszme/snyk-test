@@ -7,18 +7,10 @@ import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.TextBox;
 import org.uqbar.arena.windows.MainWindow;
 import org.uqbar.commons.model.exceptions.UserException;
-import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.ErrorsPanel;
 
 import fixture.Fixture;
-import model.estudiante.AsignacionTarea;
-import model.estudiante.EnumNotaConceptual;
-import model.estudiante.Estudiante;
-import model.estudiante.NotaConceptual;
-import model.estudiante.NotaNumerica;
-import model.estudiante.Tarea;
 import repositorios.LegajoInexistenteException;
-import repositorios.RepoEstudiantes;
 import ui.viewmodel.HomeViewModel;
 
 //TODO que hace?

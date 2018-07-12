@@ -34,8 +34,6 @@ public class EstudianteView extends SimpleWindow<Estudiante>{
 	public EstudianteView(WindowOwner parent, Estudiante estudiante) {
 		super(parent, estudiante);
 	}
-
-	
 	
 	private void modificarEstudiante() {
 		Dialog<?> dialog = new ModificarEstudianteView(this, new ModificarEstudianteViewModel(getModelObject()));
@@ -84,10 +82,10 @@ public class EstudianteView extends SimpleWindow<Estudiante>{
 		new Button(mainPanel).setCaption("Modificar datos").onClick(this::modificarEstudiante);
 		
 		new Label(mainPanel).setText("Notas");
-		Table<AsignacionTarea> tablaAsignacionesTarea = new Table<AsignacionTarea>(mainPanel, AsignacionTarea.class);
+		Table<AsignacionTarea> tablaAsignacionesTarea = new Table<AsignacionTarea>(mainPanel, AsignacionTarea.class).
+				setNumberVisibleRows(6);
 		tablaAsignacionesTarea.bindItemsToProperty("asignacionesTarea");
 	
-		
 		new Column<AsignacionTarea>(tablaAsignacionesTarea) 
 	    .setTitle("Tarea")
 	    .bindContentsToProperty("nombreTarea");
