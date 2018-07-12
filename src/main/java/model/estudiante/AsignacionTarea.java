@@ -30,11 +30,15 @@ public class AsignacionTarea {
 
 	//TODO Esto no esta bien, estamos acomplando el modelo con la view
 	public String getUltimaNota() {
-		return notas.get(notas.size() - 1).getValor();
+		return ultimaNota().getValor();
+	}
+	
+	private Nota ultimaNota() {
+		return notas.get(notas.size() - 1);
 	}
 	
 	public boolean aprobo() {
-		return notas.stream().anyMatch(Nota::esAprobada);
+		return ultimaNota().esAprobada();
 	}
 	
 	//idem aca
