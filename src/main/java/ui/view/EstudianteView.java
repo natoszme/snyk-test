@@ -11,7 +11,6 @@ import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
-import org.uqbar.commons.model.utils.ObservableUtils;
 
 import model.estudiante.AsignacionTarea;
 import model.estudiante.Estudiante;
@@ -27,13 +26,7 @@ public class EstudianteView extends SimpleWindow<Estudiante>{
 	
 	private void modificarEstudiante() {
 		Dialog<?> dialog = new ModificarEstudianteView(this, new ModificarEstudianteViewModel(getModelObject()));
-		//TODO Como hacer sin fireProperty?
-		dialog.onAccept(() -> {
-			ObservableUtils.firePropertyChanged(this.getModelObject(), "nombre");
-			ObservableUtils.firePropertyChanged(this.getModelObject(), "apellido");
-			ObservableUtils.firePropertyChanged(this.getModelObject(), "legajo");
-			ObservableUtils.firePropertyChanged(this.getModelObject(), "githubUser"); 
-		});
+		//TODO Como hacer sin fireProperty? edit: aca esta el fireOnPropertyChanged. Lo sacamos y funca pero queremos entender bien que pasaba
 		dialog.open();
 	}
 
