@@ -24,7 +24,7 @@ public class HomeViewModel {
 	public void ingresarSiPuede(WindowOwner homeView) {
 		RepoEstudiantes repo = RepoEstudiantes.getInstance();
 		try{
-			Estudiante estudiante = repo.obtenerEstudiantePorLegajo(legajo);
+			Estudiante estudiante = repo.obtenerEstudiantePorLegajo(this.getLegajo());
 			loginEstudiante(homeView, estudiante);
 		}catch(LegajoInexistenteException e) {
 			throw new UserException("Legajo inexistente");
