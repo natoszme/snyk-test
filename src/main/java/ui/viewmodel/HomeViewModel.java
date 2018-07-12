@@ -11,7 +11,7 @@ import ui.view.EstudianteView;
 
 @Observable
 public class HomeViewModel {
-	int legajo;
+	private int legajo;
 
 	public int getLegajo() {
 		return legajo;
