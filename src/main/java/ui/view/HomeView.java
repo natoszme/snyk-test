@@ -23,18 +23,13 @@ import ui.viewmodel.HomeViewModel;
 //TODO que hace?
 @SuppressWarnings("serial")
 public class HomeView extends MainWindow<HomeViewModel>{
-
-	Panel mainPan;
 	
-	Label labelError;
-	
-	public HomeView(HomeViewModel homeModel) {
-		super(homeModel);
+	public HomeView(HomeViewModel homeViewModel) {
+		super(homeViewModel);
 	}
 
 	@Override
 	public void createContents(Panel mainPanel) {
-		mainPan = mainPanel;
 		this.setTitle("Home");
 		mainPanel.setLayout(new VerticalLayout());
 		
@@ -42,7 +37,7 @@ public class HomeView extends MainWindow<HomeViewModel>{
 		
 		new TextBox(mainPanel).bindValueToProperty("legajo");
 		
-		labelError = (Label) new Label(mainPanel).setText("").setForeground(new Color(155, 0, 0));
+		new Label(mainPanel).setText("").setForeground(new Color(155, 0, 0));
 		
 		new Button(mainPanel).setCaption("Ingresar").onClick(this::ingresarSiPuede);
 		
@@ -57,10 +52,7 @@ public class HomeView extends MainWindow<HomeViewModel>{
 		}catch(LegajoInexistenteException e) {
 			throw new UserException("Legajo inexistente");
 		}
-		
-	}
-	
-	 
+	}	 
 	
 	private void loginEstudiante(Estudiante estudiante) {
 		new EstudianteView(this,estudiante).open();
