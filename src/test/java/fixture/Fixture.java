@@ -18,6 +18,7 @@ public class Fixture {
 	protected AsignacionTarea tpArena;
 	protected NotaConceptual mal;
 	protected NotaConceptual bien;
+	
 	public static Fixture getInstance() {
 		if(instancia==null)
 			return new Fixture();
