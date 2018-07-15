@@ -70,13 +70,13 @@ public class EstudianteView extends SimpleWindow<Estudiante>{
 		new Column<AsignacionTarea>(tablaAsignacionesTarea) 
 	    .setTitle("Ultima nota")
 	    .bindContentsToProperty("ultimaNota")
-	    .setTransformer(new NotaTransformer());
-	    //.setTransformer((Transformer<P, String>) new NotaTransformer());
+	    .setTransformer(new NotaToStringTransformer());
 		
 		//TODO aca hubo algo raro: se estaba llamando al metodo aprobo pero no estaba definido getAprbo y andaba igual...
 		new Column<AsignacionTarea>(tablaAsignacionesTarea) 
 	    .setTitle("Aprobo")
 	    .bindContentsToProperty("aprobo");
+	    //.setTransformer(new );;
 	}
 
 	//TODO y que pasa si quiero usar un panel de los de arriba?
