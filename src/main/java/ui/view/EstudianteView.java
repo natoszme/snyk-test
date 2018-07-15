@@ -68,8 +68,10 @@ public class EstudianteView extends SimpleWindow<Estudiante>{
 	    .bindContentsToProperty("nombreTarea");
 		
 		new Column<AsignacionTarea>(tablaAsignacionesTarea) 
-	    .setTitle("Nota")
-	    .bindContentsToProperty("ultimaNota");
+	    .setTitle("Ultima nota")
+	    .bindContentsToProperty("ultimaNota")
+	    .setTransformer(new UltimaNotaTransformer());
+	    //.setTransformer((Transformer<P, String>) new NotaTransformer());
 		
 		//TODO aca hubo algo raro: se estaba llamando al metodo aprobo pero no estaba definido getAprbo y andaba igual...
 		new Column<AsignacionTarea>(tablaAsignacionesTarea) 

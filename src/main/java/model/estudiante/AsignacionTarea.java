@@ -29,23 +29,23 @@ public class AsignacionTarea {
 	}
 
 	//TODO Esto no esta bien, estamos acomplando el modelo con la view
-	public String getUltimaNota() {
+	/*public String getUltimaNota() {
 		return ultimaNota().getValor();
-	}
+	}*/
 	
-	private Nota ultimaNota() {
+	public Nota getUltimaNota() {
 		return notas.get(notas.size() - 1);
 	}
 	
-	public boolean aprobo() {
-		return ultimaNota().esAprobada();
+	public boolean getAprobo() {
+		return getUltimaNota().esAprobada();
 	}
 	
 	//idem aca
-	public String getAprobo() {
+	/*public String getAprobo() {
 		if (aprobo()) return "si";
 		return "no";
-	}
+	}*/
 	
 	public String getNombreTarea() {
 		return tarea.nombre();

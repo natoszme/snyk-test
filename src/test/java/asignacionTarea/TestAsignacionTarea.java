@@ -11,22 +11,22 @@ import model.estudiante.NotaNumerica;
 public class TestAsignacionTarea extends Fixture {
 	@Test
 	public void pruebaDeInglesEstaAprobada() {
-		assertTrue(pruebaDeIngles.aprobo());
+		assertTrue(pruebaDeIngles.getAprobo());
 	}
 	@Test
 	public void pruebaDeInglesEstaDesprobadaSiCalificaUn3() {
 		pruebaDeIngles.calificar(new NotaNumerica(3));
-		assertFalse(pruebaDeIngles.aprobo());
+		assertFalse(pruebaDeIngles.getAprobo());
 	}
 	
 	@Test
 	public void tpArenaEstaDesaprobada() {
-		assertFalse(tpArena.aprobo());
+		assertFalse(tpArena.getAprobo());
 	}
 	@Test
 	public void tpArenaEstaAprobadaDespuesDeCalificarBien() {
 		tpArena.calificar(bien);
-		assertTrue(tpArena.aprobo());
+		assertTrue(tpArena.getAprobo());
 	}
 	
 }
