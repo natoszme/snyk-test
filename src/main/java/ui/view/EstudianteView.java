@@ -65,7 +65,8 @@ public class EstudianteView extends SimpleWindow<Estudiante>{
 	
 		new Column<AsignacionTarea>(tablaAsignacionesTarea) 
 	    .setTitle("Tarea")
-	    .bindContentsToProperty("nombreTarea");
+	    .bindContentsToProperty("tarea")
+	    .setTransformer(new NombreTareaToStringTransformer());;
 		
 		new Column<AsignacionTarea>(tablaAsignacionesTarea) 
 	    .setTitle("Ultima nota")

@@ -36,7 +36,7 @@ public class AsignacionTarea {
 		return getUltimaNota().esAprobada();
 	}
 	
-	public String getNombreTarea() {
-		return tarea.nombre();
+	public Tarea getTarea() {
+		return tarea;
 	}
 }
