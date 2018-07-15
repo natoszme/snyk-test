@@ -15,11 +15,11 @@ import org.uqbar.arena.windows.ErrorsPanel;
 import model.estudiante.Estudiante;
 import model.repositorios.LegajoInexistenteException;
 import model.repositorios.RepoEstudiantes;
-import tarea.AsignacionTarea;
-import tarea.EnumNotaConceptual;
-import tarea.NotaConceptual;
-import tarea.NotaNumerica;
-import tarea.Tarea;
+import model.tarea.AsignacionTarea;
+import model.tarea.EnumNotaConceptual;
+import model.tarea.NotaConceptual;
+import model.tarea.NotaNumerica;
+import model.tarea.Tarea;
 import ui.viewmodel.HomeViewModel;
 
 //TODO que hace?

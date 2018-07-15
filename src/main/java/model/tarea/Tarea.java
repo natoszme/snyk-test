@@ -1,4 +1,4 @@
-package tarea;
+package model.tarea;
 
 public class Tarea {
 	private String nombre;

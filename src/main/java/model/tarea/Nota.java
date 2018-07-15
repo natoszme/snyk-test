@@ -1,4 +1,4 @@
-package tarea;
+package model.tarea;
 
 import org.uqbar.commons.model.annotations.Observable;
 

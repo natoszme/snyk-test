@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.uqbar.commons.model.annotations.Observable;
 
-import tarea.AsignacionTarea;
+import model.tarea.AsignacionTarea;
 
 @Observable
 public class Estudiante {

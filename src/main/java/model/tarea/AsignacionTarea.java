@@ -1,4 +1,4 @@
-package tarea;
+package model.tarea;
 
 import java.util.ArrayList;
 import java.util.List;
