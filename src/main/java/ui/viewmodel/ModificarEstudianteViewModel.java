@@ -15,18 +15,15 @@ public class ModificarEstudianteViewModel {
 	//TODO se puede evitar la asignacion default? extendiendo a estudiante?
 	public ModificarEstudianteViewModel(Estudiante estudiante) {
 		modelo = estudiante;
-		nombre = modelo.nombre;
-		apellido = modelo.apellido;
-		legajo = modelo.legajo;
-		githubUser = modelo.githubUser;
+		nombre = modelo.getNombre();
+		apellido = modelo.getApellido();
+		githubUser = modelo.getGithubUser();
+		legajo = modelo.getLegajo();
 	}
 	
 	//TODO revisar esto
 	public void actualizarDatosEstudiante() {
-		modelo.nombre = nombre;
-		modelo.apellido = apellido;
-		modelo.legajo = legajo;
-		modelo.githubUser = githubUser;
+		modelo.actualizarDatos(nombre, apellido, githubUser, legajo);
 	}
 
 	public String getNombre() {

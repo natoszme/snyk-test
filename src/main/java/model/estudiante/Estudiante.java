@@ -14,10 +14,7 @@ public class Estudiante {
 	private List<AsignacionTarea> asignaciones = new ArrayList<>();
 	
 	public Estudiante(String nombre, String apellido, String githubUser, long legajo) {
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.githubUser = githubUser;
-		this.legajo = legajo;		
+		actualizarDatos(nombre, apellido, githubUser, legajo);	
 	}
 	
 	public List<AsignacionTarea> getAsignaciones(){
@@ -63,5 +60,12 @@ public class Estudiante {
 
 	public void setGithubUser(String githubUser) {
 		this.githubUser = githubUser;
+	}
+
+	public void actualizarDatos(String nombre, String apellido, String githubUser, long legajo) {
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.githubUser = githubUser;
+		this.legajo = legajo;		
 	}
 }
