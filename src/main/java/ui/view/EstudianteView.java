@@ -70,7 +70,7 @@ public class EstudianteView extends SimpleWindow<Estudiante>{
 		new Column<AsignacionTarea>(tablaAsignacionesTarea) 
 	    .setTitle("Ultima nota")
 	    .bindContentsToProperty("ultimaNota")
-	    .setTransformer(new UltimaNotaTransformer());
+	    .setTransformer(new NotaTransformer());
 	    //.setTransformer((Transformer<P, String>) new NotaTransformer());
 		
 		//TODO aca hubo algo raro: se estaba llamando al metodo aprobo pero no estaba definido getAprbo y andaba igual...
