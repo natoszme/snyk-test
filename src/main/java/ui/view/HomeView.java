@@ -10,6 +10,7 @@ import org.uqbar.commons.model.exceptions.UserException;
 import org.uqbar.arena.windows.ErrorsPanel;
 
 import fixture.Fixture;
+import model.estudiante.Estudiante;
 import repositorios.LegajoInexistenteException;
 import ui.viewmodel.HomeViewModel;
 
@@ -45,7 +46,9 @@ public class HomeView extends MainWindow<HomeViewModel>{
 	
 	private void intentarAbrirEstudianteView() {
 		try{
-			getModelObject().ingresarSiPuede(this);
+			Estudiante estudianteLogueado = getModelObject().obtenerEstudiante();
+			this.close();
+			new EstudianteView(this, estudianteLogueado).open();
 		}
 		catch(LegajoInexistenteException e){
 			System.out.println("Tiro la excepcion de legajo");
