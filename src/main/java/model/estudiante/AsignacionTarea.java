@@ -27,11 +27,6 @@ public class AsignacionTarea {
 	public void setNotas(List<Nota> notas) {
 		this.notas = notas;
 	}
-
-	//TODO Esto no esta bien, estamos acomplando el modelo con la view
-	/*public String getUltimaNota() {
-		return ultimaNota().getValor();
-	}*/
 	
 	public Nota getUltimaNota() {
 		return notas.get(notas.size() - 1);
@@ -40,12 +35,6 @@ public class AsignacionTarea {
 	public boolean getAprobo() {
 		return getUltimaNota().esAprobada();
 	}
-	
-	//idem aca
-	/*public String getAprobo() {
-		if (aprobo()) return "si";
-		return "no";
-	}*/
 	
 	public String getNombreTarea() {
 		return tarea.nombre();
