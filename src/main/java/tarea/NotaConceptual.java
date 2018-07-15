@@ -1,4 +1,4 @@
-package model.estudiante;
+package tarea;
 
 public class NotaConceptual extends Nota{
 	private EnumNotaConceptual nota;

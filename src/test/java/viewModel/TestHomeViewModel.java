@@ -13,7 +13,7 @@ public class TestHomeViewModel extends Fixture {
 		assertEquals("Pepe", repo.obtenerEstudiantePorLegajo(111111).getNombre());
 	}
 	
-	@Test (expected = repositorios.LegajoInexistenteException.class)
+	@Test (expected = model.repositorios.LegajoInexistenteException.class)
 	public void ElLegajo2345TiraErrorSiIntentoTraerEstudiante() {
 		repo.obtenerEstudiantePorLegajo(2345);
 	}

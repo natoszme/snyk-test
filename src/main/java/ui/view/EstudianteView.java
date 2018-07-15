@@ -12,8 +12,8 @@ import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
 
-import model.estudiante.AsignacionTarea;
 import model.estudiante.Estudiante;
+import tarea.AsignacionTarea;
 import ui.viewmodel.ModificarEstudianteViewModel;
 
 //TODO que hace?

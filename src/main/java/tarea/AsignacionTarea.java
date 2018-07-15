@@ -1,4 +1,4 @@
-package model.estudiante;
+package tarea;
 
 import java.util.ArrayList;
 import java.util.List;

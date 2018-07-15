@@ -3,7 +3,7 @@ package ui.viewmodel;
 import org.uqbar.commons.model.annotations.Observable;
 
 import model.estudiante.Estudiante;
-import repositorios.RepoEstudiantes;
+import model.repositorios.RepoEstudiantes;
 
 @Observable
 public class HomeViewModel {

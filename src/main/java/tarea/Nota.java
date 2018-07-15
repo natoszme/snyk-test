@@ -1,4 +1,4 @@
-package model.estudiante;
+package tarea;
 
 import org.uqbar.commons.model.annotations.Observable;
 

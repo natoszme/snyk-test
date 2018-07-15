@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import fixture.Fixture;
-import model.estudiante.NotaNumerica;
+import tarea.NotaNumerica;
 
 public class TestAsignacionTarea extends Fixture {
 	@Test

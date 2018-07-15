@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.uqbar.commons.model.annotations.Observable;
 
+import tarea.AsignacionTarea;
+
 @Observable
 public class Estudiante {
 	public String nombre;

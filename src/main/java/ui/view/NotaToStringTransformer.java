@@ -2,7 +2,7 @@ package ui.view;
 
 import org.apache.commons.collections15.Transformer;
 
-import model.estudiante.Nota;
+import tarea.Nota;
 
 public class NotaToStringTransformer implements Transformer<Nota, String> {
 

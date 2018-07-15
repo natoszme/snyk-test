@@ -1,12 +1,12 @@
 package fixture;
 
-import model.estudiante.AsignacionTarea;
-import model.estudiante.EnumNotaConceptual;
 import model.estudiante.Estudiante;
-import model.estudiante.NotaConceptual;
-import model.estudiante.NotaNumerica;
-import model.estudiante.Tarea;
-import repositorios.RepoEstudiantes;
+import model.repositorios.RepoEstudiantes;
+import tarea.AsignacionTarea;
+import tarea.EnumNotaConceptual;
+import tarea.NotaConceptual;
+import tarea.NotaNumerica;
+import tarea.Tarea;
 
 public class Fixture {
 	

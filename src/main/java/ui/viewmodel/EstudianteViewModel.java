@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.uqbar.commons.model.annotations.Observable;
 
-import model.estudiante.AsignacionTarea;
 import model.estudiante.Estudiante;
+import tarea.AsignacionTarea;
 
 //TODO esta bien prescindir de este viewmodel? porque la obtencion de la ultima nota (motivo por el cual estaba este view model) se hace en la asignacion tarea
 @Observable

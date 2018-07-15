@@ -12,14 +12,14 @@ import fixture.Fixture;
 
 import org.uqbar.arena.windows.ErrorsPanel;
 
-import model.estudiante.AsignacionTarea;
-import model.estudiante.EnumNotaConceptual;
 import model.estudiante.Estudiante;
-import model.estudiante.NotaConceptual;
-import model.estudiante.NotaNumerica;
-import model.estudiante.Tarea;
-import repositorios.LegajoInexistenteException;
-import repositorios.RepoEstudiantes;
+import model.repositorios.LegajoInexistenteException;
+import model.repositorios.RepoEstudiantes;
+import tarea.AsignacionTarea;
+import tarea.EnumNotaConceptual;
+import tarea.NotaConceptual;
+import tarea.NotaNumerica;
+import tarea.Tarea;
 import ui.viewmodel.HomeViewModel;
 
 //TODO que hace?
