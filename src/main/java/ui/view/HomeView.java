@@ -59,11 +59,13 @@ public class HomeView extends MainWindow<HomeViewModel>{
 			new EstudianteView(this, estudianteLogueado).open();
 		}
 		catch(LegajoInexistenteException e){
-			System.out.println("Tiro la excepcion de legajo");
+			System.out.println("Legajo no identificado");
 			//TODO puede ser que no deje crear un label aca?
 			//tampoco deja hacer esto:
 			legajoInexistenteError.setText("No se reconoce el legajo");
-			throw new UserException("No se reconoce el legajo");	
+			//supuestamente, Aena deberia cachear la siguiente excepcion pero no lo hace...
+			//throw new UserException("No se reconoce el legajo");
+			this.close();
 		}
 	}
 	
