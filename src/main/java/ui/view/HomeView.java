@@ -14,7 +14,6 @@ import org.uqbar.arena.windows.ErrorsPanel;
 
 import model.estudiante.Estudiante;
 import model.repositorios.LegajoInexistenteException;
-import model.repositorios.RepoEstudiantes;
 import model.tarea.AsignacionTarea;
 import model.tarea.EnumNotaConceptual;
 import model.tarea.NotaConceptual;
@@ -70,7 +69,7 @@ public class HomeView extends MainWindow<HomeViewModel>{
 	}
 	
 	public static void main(String[] args) {
-		Estudiante estudiante;
+		/*Estudiante estudiante;
 		AsignacionTarea pruebaDeIngles;
 		AsignacionTarea tpOperativos;
 		AsignacionTarea tpArena;
@@ -99,7 +98,7 @@ public class HomeView extends MainWindow<HomeViewModel>{
 		estudiante.asignarTarea(pruebaDeIngles);
 		estudiante.asignarTarea(tpArena);		
 		
-		repo.agregarEstudiante(estudiante);
+		repo.agregarEstudiante(estudiante);*/
 		
 		HomeViewModel viewModel = new HomeViewModel();
 		new HomeView(viewModel).startApplication();
