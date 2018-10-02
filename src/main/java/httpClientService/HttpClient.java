@@ -36,11 +36,11 @@ public class HttpClient {
 		return token;		
 	}
     
-    public ClientResponse dameEstudiante() {
+    public String dameEstudiante() {
     	 ClientResponse response = this.cliente.resource(API_NOTAS).path(RECURSO_ESTUDIANTE)
                  .accept(MediaType.APPLICATION_JSON)
                  .header("Authorization", PRE_TOKEN + " " + token)
                  .get(ClientResponse.class);
-         return response;
+         return response.getEntity(String.class);
     }
 }
