@@ -5,19 +5,31 @@ import java.util.List;
 
 import org.uqbar.commons.model.annotations.Observable;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import model.tarea.AsignacionTarea;
 
 @Observable
 public class Estudiante {
+	@JsonProperty("first_name")
 	public String nombre;
+	
+	@JsonProperty("last_name")
 	public String apellido;
+	
+	@JsonProperty("github_user")
 	public String githubUser;
+	
+	@JsonProperty("code")
 	public long legajo;
+	
 	private List<AsignacionTarea> asignaciones = new ArrayList<>();
 	
 	public Estudiante(String nombre, String apellido, String githubUser, long legajo) {
 		actualizarDatos(nombre, apellido, githubUser, legajo);	
 	}
+	
+	public Estudiante() {}
 	
 	public List<AsignacionTarea> getAsignaciones(){
 		return asignaciones;
