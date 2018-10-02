@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import model.estudiante.Estudiante;
 
-public class JsonDeserializer {
+public class JsonDeserializerCustom {
 	
 	public static <Type> Type deserialize(String json, TypeReference<Type> type){
 		Type deserialized = null;

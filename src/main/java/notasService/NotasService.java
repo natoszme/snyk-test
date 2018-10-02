@@ -2,7 +2,7 @@ package notasService;
 
 
 import httpClientService.HttpClient;
-import json.JsonDeserializer;
+import json.JsonDeserializerCustom;
 import model.estudiante.Estudiante;
 
 public class NotasService {
@@ -15,10 +15,10 @@ public class NotasService {
     }
 
 	private Estudiante obtenerPerfilEstudiante() {
-		return JsonDeserializer.deserializarEstudiante(HttpClient.getInstance().dameEstudiante());
+		return JsonDeserializerCustom.deserializarEstudiante(HttpClient.getInstance().dameEstudiante());
 	}
 
 	private Estudiante obtenerEstudianteConAsignaciones() {
-		return JsonDeserializer.deserializarAsignaciones(HttpClient.getInstance().dameAsignaciones());
+		return JsonDeserializerCustom.deserializarAsignaciones(HttpClient.getInstance().dameAsignaciones());
 	}
 }

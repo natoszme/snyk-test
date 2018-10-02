@@ -11,6 +11,10 @@ public class NotaNumerica extends Nota{
 	public NotaNumerica(double numero) {
 		this.valorNumerico = numero;
 	}
+	
+	public double valor() {
+		return valorNumerico;
+	}
 
 	public boolean esAprobada() {
 		return valorNumerico >= 6.0;

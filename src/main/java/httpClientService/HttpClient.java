@@ -49,6 +49,43 @@ public class HttpClient {
                  .accept(MediaType.APPLICATION_JSON)
                  .header("Authorization", PRE_TOKEN + " " + token)
                  .get(ClientResponse.class);
-         return response.getEntity(String.class);
+         //return response.getEntity(String.class);
+    	 return "{\r\n" + 
+			"  \"assignments\": [\r\n" + 
+			"    {\r\n" + 
+			"      \"id\": 1,\r\n" + 
+			"      \"title\": \"Primer Parcial\",\r\n" + 
+			"      \"description\": null,\r\n" + 
+			"      \"grades\": [\r\n" + 
+			"        {\r\n" + 
+			"          \"id\": 1,\r\n" + 
+			"          \"value\": 2,\r\n" + 
+			"          \"created_at\": \"2017-03-25T13:56:07.526Z\",\r\n" + 
+			"          \"updated_at\": \"2017-03-25T13:56:07.526Z\"\r\n" + 
+			"        },\r\n" + 
+			"        {\r\n" + 
+			"          \"id\": 2,\r\n" + 
+			"          \"value\": \"B+\",\r\n" +
+			"          \"created_at\": \"2017-03-25T13:56:07.595Z\",\r\n" + 
+			"          \"updated_at\": \"2017-03-25T13:56:07.595Z\"\r\n" + 
+			"        }\r\n" + 
+			"      ]\r\n" + 
+			"    },\r\n" + 
+			"    {\r\n" + 
+			"      \"id\": 3,\r\n" + 
+			"      \"title\": \"TPA1\",\r\n" + 
+			"      \"description\": \"Primera Entrega del TP Anual\",\r\n" + 
+			"      \"grades\": [\r\n" + 
+			"        {\r\n" + 
+			"          \"id\": 4,\r\n" + 
+			"          \"value\": \"B+\",\r\n" + 
+			"          \"created_at\": \"2017-03-25T13:56:07.649Z\",\r\n" + 
+			"          \"updated_at\": \"2017-03-25T13:56:07.649Z\"\r\n" + 
+			"        }\r\n" + 
+			"      ]\r\n" + 
+			"    }\r\n" + 
+			"  ]\r\n" + 
+			"}\r\n" + 
+			"";
     }
 }

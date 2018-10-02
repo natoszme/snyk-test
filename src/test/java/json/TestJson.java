@@ -5,6 +5,9 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import model.estudiante.Estudiante;
+import model.tarea.EnumNotaConceptual;
+import model.tarea.NotaConceptual;
+import model.tarea.NotaNumerica;
 
 public class TestJson {
 	private String jsonDeMatias = "{\r\n" + 
@@ -31,34 +34,108 @@ public class TestJson {
 			"    ]\r\n" + 
 			"}";
 	
+	private String jsonAsignacionesConNotas = "{\r\n" + 
+			"  \"assignments\": [\r\n" + 
+			"    {\r\n" + 
+			"      \"id\": 1,\r\n" + 
+			"      \"title\": \"Primer Parcial\",\r\n" + 
+			"      \"description\": null,\r\n" + 
+			"      \"grades\": [\r\n" + 
+			"        {\r\n" + 
+			"          \"id\": 1,\r\n" + 
+			"          \"value\": 2,\r\n" + 
+			"          \"created_at\": \"2017-03-25T13:56:07.526Z\",\r\n" + 
+			"          \"updated_at\": \"2017-03-25T13:56:07.526Z\"\r\n" + 
+			"        },\r\n" + 
+			"        {\r\n" + 
+			"          \"id\": 2,\r\n" + 
+			"          \"value\": 7,\r\n" + 
+			"          \"created_at\": \"2017-03-25T13:56:07.595Z\",\r\n" + 
+			"          \"updated_at\": \"2017-03-25T13:56:07.595Z\"\r\n" + 
+			"        }\r\n" + 
+			"      ]\r\n" + 
+			"    }\r\n" + 
+			"  ]\r\n" + 
+			"}";
+	
+	private String jsonConNotasConceptualesYNumericas = "{\r\n" + 
+			"  \"assignments\": [\r\n" + 
+			"    {\r\n" + 
+			"      \"id\": 1,\r\n" + 
+			"      \"title\": \"Primer Parcial\",\r\n" + 
+			"      \"description\": null,\r\n" + 
+			"      \"grades\": [\r\n" + 
+			"        {\r\n" + 
+			"          \"id\": 1,\r\n" + 
+			"          \"value\": 2,\r\n" + 
+			"          \"created_at\": \"2017-03-25T13:56:07.526Z\",\r\n" + 
+			"          \"updated_at\": \"2017-03-25T13:56:07.526Z\"\r\n" + 
+			"        },\r\n" + 
+			"        {\r\n" + 
+			"          \"id\": 2,\r\n" + 
+			"          \"value\": \"B+\",\r\n" +
+			"          \"created_at\": \"2017-03-25T13:56:07.595Z\",\r\n" + 
+			"          \"updated_at\": \"2017-03-25T13:56:07.595Z\"\r\n" + 
+			"        }\r\n" + 
+			"      ]\r\n" + 
+			"    },\r\n" + 
+			"    {\r\n" + 
+			"      \"id\": 3,\r\n" + 
+			"      \"title\": \"TPA1\",\r\n" + 
+			"      \"description\": \"Primera Entrega del TP Anual\",\r\n" + 
+			"      \"grades\": [\r\n" + 
+			"        {\r\n" + 
+			"          \"id\": 4,\r\n" + 
+			"          \"value\": \"B+\",\r\n" + 
+			"          \"created_at\": \"2017-03-25T13:56:07.649Z\",\r\n" + 
+			"          \"updated_at\": \"2017-03-25T13:56:07.649Z\"\r\n" + 
+			"        }\r\n" + 
+			"      ]\r\n" + 
+			"    }\r\n" + 
+			"  ]\r\n" + 
+			"}\r\n" + 
+			"";
+	
 	@Test
 	public void alPasarUnJsonDevuelveBienElNombreDelEstudiante() {
-		Estudiante matias = JsonDeserializer.deserializarEstudiante(jsonDeMatias);
+		Estudiante matias = JsonDeserializerCustom.deserializarEstudiante(jsonDeMatias);
 		Assert.assertEquals("Matias", matias.getNombre());
 	}
 	
 	@Test
 	public void alPasarUnJsonDevuelveBienElApellidoDelEstudiante() {
-		Estudiante matias = JsonDeserializer.deserializarEstudiante(jsonDeMatias);
+		Estudiante matias = JsonDeserializerCustom.deserializarEstudiante(jsonDeMatias);
 		Assert.assertEquals("Kranevitter", matias.getApellido());
 	}
 	
 	@Test
 	public void alPasarUnJsonDevuelveBienElGithubUserDelEstudiante() {
-		Estudiante matias = JsonDeserializer.deserializarEstudiante(jsonDeMatias);
+		Estudiante matias = JsonDeserializerCustom.deserializarEstudiante(jsonDeMatias);
 		Assert.assertEquals("kranevictor", matias.getGithubUser());
 	}
 	
 	@Test
 	public void alPasarUnJsonDevuelveBienElLegajoDelEstudiante() {
-		Estudiante matias = JsonDeserializer.deserializarEstudiante(jsonDeMatias);
+		Estudiante matias = JsonDeserializerCustom.deserializarEstudiante(jsonDeMatias);
 		Assert.assertEquals(111222333, matias.getLegajo());
 	}
 	
 	@Test
 	public void alPasarUnJsonDeAsignacionesDevuelveBienElNombreDeLaAsignacion() {
 		//List<AsignacionTarea> asignacionesMatias = JsonDeserializer.deserializarAsignaciones(jsonAsignacionesMatias);
-		Estudiante matiasConAsignaciones = JsonDeserializer.deserializarAsignaciones(jsonAsignacionesMatias);
+		Estudiante matiasConAsignaciones = JsonDeserializerCustom.deserializarAsignaciones(jsonAsignacionesMatias);
 		Assert.assertEquals("TPA1", matiasConAsignaciones.getAsignaciones().get(0).getTarea().getNombre());
+	}
+	
+	@Test
+	public void lasNotasNumericasDeUnaAsignacionSeLevantanBien() {
+		Estudiante matiasConAsignaciones = JsonDeserializerCustom.deserializarAsignaciones(jsonAsignacionesConNotas);
+		Assert.assertEquals(7.0, ((NotaNumerica)matiasConAsignaciones.getAsignaciones().get(0).getUltimaNota()).valor(), 0);
+	}
+	
+	@Test
+	public void lasNotasConceptualesDeUnaAsignacionSeLevantanBien() {
+		Estudiante matiasConAsignaciones = JsonDeserializerCustom.deserializarAsignaciones(jsonConNotasConceptualesYNumericas);
+		Assert.assertEquals(EnumNotaConceptual.BIEN_MAS, ((NotaConceptual)matiasConAsignaciones.getAsignaciones().get(0).getUltimaNota()).valor());
 	}
 }

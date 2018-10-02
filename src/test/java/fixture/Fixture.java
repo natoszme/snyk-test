@@ -20,15 +20,13 @@ public abstract class Fixture {
 		estudiante = new Estudiante("Pepe", "Sanchez", "pepeCapo123", 111111);
 		pruebaDeIngles = new AsignacionTarea(new Tarea("Prueba de ingles"));
 		pruebaDeIngles.calificar(new NotaNumerica(8));
-		bien = new NotaConceptual();
-		bien.setNota(EnumNotaConceptual.BIEN);
+		bien = new NotaConceptual(EnumNotaConceptual.BIEN);
 	    tpOperativos = new AsignacionTarea(new Tarea("TP Operativos"));
 		tpOperativos.calificar(bien);
 		
 		AsignacionTarea pruebaDeLegislacion = new AsignacionTarea(new Tarea("Legislacion"));
 		pruebaDeLegislacion.calificar(new NotaNumerica(3));
-	    mal = new NotaConceptual();
-		mal.setNota(EnumNotaConceptual.MAL);
+	    mal = new NotaConceptual(EnumNotaConceptual.MAL);
 	    tpArena = new AsignacionTarea(new Tarea("TP Arena"));
 		tpArena.calificar(mal);
 		

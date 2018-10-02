@@ -2,6 +2,7 @@ package model.tarea;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.uqbar.commons.model.annotations.Observable;
 
@@ -50,6 +51,9 @@ public class AsignacionTarea {
 	}
 	
 	public Nota getUltimaNota() {
+		if(notas.size() == 0) {
+			return null;
+		}
 		return notas.get(notas.size() - 1);
 	}
 	
