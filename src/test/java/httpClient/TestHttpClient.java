@@ -22,10 +22,8 @@ public class TestHttpClient {
 	}
 	
 	@Test
-	public void elEstudianteDePruebaSeLlamaMatias() {
+	public void elJsonDevueltoContieneNombre() {
 		String jsonResponse = HttpClient.getInstance().dameEstudiante();
-		Assert.assertTrue(jsonResponse.contains("Matias"));
+		Assert.assertTrue(jsonResponse.contains("first_name"));
 	}
-	
-	//TODO agregar mas!
 }
