@@ -3,19 +3,18 @@ package json;
 import java.io.IOException;
 
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import model.estudiante.Estudiante;
 
 public class JsonDeserializer {
-
-	public static Estudiante deserializarCliente(String json) {
-		
-		Estudiante estudiante = null;
-		
+	
+	public static <Type> Type deserialize(String json, TypeReference<Type> type){
+		Type deserialized = null;
 		try {
-			estudiante = new ObjectMapper().readValue(json, Estudiante.class);
+			deserialized = new ObjectMapper().readValue(json, type);
 		} catch (JsonParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -26,8 +25,14 @@ public class JsonDeserializer {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		return estudiante;
+		return deserialized;
+	}
+
+	public static Estudiante deserializarEstudiante(String json) {
+		return deserialize(json, new TypeReference<Estudiante>() {});
 	}
 	
+	public static Estudiante deserializarAsignaciones(String json){
+		return deserialize(json, new TypeReference<Estudiante>() {});
+	}
 }

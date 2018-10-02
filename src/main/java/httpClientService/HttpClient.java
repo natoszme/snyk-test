@@ -33,11 +33,19 @@ public class HttpClient {
 	}
     
     public String getToken() {
-		return token;		
+		return token;
 	}
     
     public String dameEstudiante() {
     	 ClientResponse response = this.cliente.resource(API_NOTAS).path(RECURSO_ESTUDIANTE)
+                 .accept(MediaType.APPLICATION_JSON)
+                 .header("Authorization", PRE_TOKEN + " " + token)
+                 .get(ClientResponse.class);
+         return response.getEntity(String.class);
+    }
+    
+    public String dameAsignaciones() {
+    	 ClientResponse response = this.cliente.resource(API_NOTAS).path(RECURSO_ESTUDIANTE + "/" + RECURSO_TAREAS)
                  .accept(MediaType.APPLICATION_JSON)
                  .header("Authorization", PRE_TOKEN + " " + token)
                  .get(ClientResponse.class);

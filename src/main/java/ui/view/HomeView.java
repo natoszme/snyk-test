@@ -15,7 +15,6 @@ import model.estudiante.Estudiante;
 import model.repositorios.LegajoInexistenteException;
 import ui.viewmodel.HomeViewModel;
 
-//TODO que hace?
 @SuppressWarnings("serial")
 public class HomeView extends MainWindow<HomeViewModel>{
 	

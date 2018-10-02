@@ -24,4 +24,10 @@ public class TestHttpClient {
 		String jsonResponse = HttpClient.getInstance().dameEstudiante();
 		Assert.assertTrue(jsonResponse.contains("first_name"));
 	}
+	
+	@Test
+	public void elJsonDevuelveLasAsignaciones() {
+		String jsonResponse = HttpClient.getInstance().dameAsignaciones();
+		Assert.assertTrue(jsonResponse.contains("assignments"));
+	}
 }

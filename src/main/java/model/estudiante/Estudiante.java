@@ -23,6 +23,7 @@ public class Estudiante {
 	@JsonProperty("code")
 	public long legajo;
 	
+	@JsonProperty("assignments")
 	private List<AsignacionTarea> asignaciones = new ArrayList<>();
 	
 	public Estudiante(String nombre, String apellido, String githubUser, long legajo) {

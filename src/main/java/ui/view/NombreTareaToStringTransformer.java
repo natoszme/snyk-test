@@ -8,7 +8,7 @@ public class NombreTareaToStringTransformer implements Transformer<Tarea, String
 
 	@Override
 	public String transform(Tarea tarea) {
-		return tarea.nombre();
+		return tarea.getNombre();
 	}
 
 }
