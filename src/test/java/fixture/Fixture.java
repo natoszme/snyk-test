@@ -1,17 +1,14 @@
 package fixture;
 
 import model.estudiante.Estudiante;
-import model.repositorios.RepoEstudiantes;
 import model.tarea.AsignacionTarea;
 import model.tarea.EnumNotaConceptual;
 import model.tarea.NotaConceptual;
 import model.tarea.NotaNumerica;
 import model.tarea.Tarea;
 
-public class Fixture {
+public abstract class Fixture {
 	
-	static Fixture instancia = null;
-	protected RepoEstudiantes repo;
 	protected Estudiante estudiante;
 	protected AsignacionTarea pruebaDeIngles;
 	protected AsignacionTarea tpOperativos;
@@ -19,19 +16,7 @@ public class Fixture {
 	protected NotaConceptual mal;
 	protected NotaConceptual bien;
 	
-	public static Fixture getInstance() {
-		if(instancia==null)
-			return new Fixture();
-		
-		return instancia;
-	}
-	public Fixture() {
-		fixture();
-	}
-	
-	public void fixture() {
-		repo = RepoEstudiantes.getInstance();
-		
+	public Fixture() {		
 		estudiante = new Estudiante("Pepe", "Sanchez", "pepeCapo123", 111111);
 		pruebaDeIngles = new AsignacionTarea(new Tarea("Prueba de ingles"));
 		pruebaDeIngles.calificar(new NotaNumerica(8));
@@ -50,9 +35,7 @@ public class Fixture {
 		estudiante.asignarTarea(pruebaDeLegislacion);
 		estudiante.asignarTarea(tpOperativos);
 		estudiante.asignarTarea(pruebaDeIngles);
-		estudiante.asignarTarea(tpArena);		
-		
-		repo.agregarEstudiante(estudiante);
+		estudiante.asignarTarea(tpArena);
 	}
 	
 }
