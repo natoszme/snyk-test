@@ -1,21 +1,17 @@
-package viewModel;
-
-import static org.junit.Assert.assertEquals;
+package login;
 
 import org.junit.Test;
 
 import fixture.Fixture;
+import login.LoginHandler;
 
-public class TestHomeViewModel extends Fixture {	
-	
-	@Test
-	public void ElLegajo111111TraeAlEstudianteConNombrePrueba() {
-		assertEquals("Pepe", repo.obtenerEstudiantePorLegajo(111111).getNombre());
-	}
+public class TestLogin extends Fixture {
 	
 	@Test (expected = model.repositorios.LegajoInexistenteException.class)
-	public void ElLegajo2345TiraErrorSiIntentoTraerEstudiante() {
-		repo.obtenerEstudiantePorLegajo(2345);
+	public void ElLegajo12345TiraErrorSiIntentoTraerEstudiante() {
+		LoginHandler.getInstance().intentarLoguearA(12345);
 	}
+	
+	//TODO test de integracion para ver que se traiga bien al estudiante
 			
 }
