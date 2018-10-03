@@ -2,23 +2,28 @@ package notasService;
 
 
 import httpClientService.HttpClient;
-import json.JsonDeserializerCustom;
+import json.JsonParser;
 import model.estudiante.Estudiante;
 
 public class NotasService {
 	
-    public Estudiante dameEstudiante() {
+    public static Estudiante dameEstudiante() {
     	Estudiante estudianteConPerfil = obtenerPerfilEstudiante();
     	Estudiante estudianteConAsignaciones = obtenerEstudianteConAsignaciones();
     	estudianteConPerfil.setAsignaciones(estudianteConAsignaciones.getAsignaciones());
     	return estudianteConPerfil;
     }
 
-	private Estudiante obtenerPerfilEstudiante() {
-		return JsonDeserializerCustom.deserializarEstudiante(HttpClient.getInstance().dameEstudiante());
+	private static Estudiante obtenerPerfilEstudiante() {
+		return JsonParser.deserializarEstudiante(HttpClient.getInstance().dameEstudiante());
 	}
 
-	private Estudiante obtenerEstudianteConAsignaciones() {
-		return JsonDeserializerCustom.deserializarAsignaciones(HttpClient.getInstance().dameAsignaciones());
+	private static Estudiante obtenerEstudianteConAsignaciones() {
+		return JsonParser.deserializarAsignaciones(HttpClient.getInstance().dameAsignaciones());
+	}
+
+	public static void actualizarPerfil(Estudiante modelo) {
+		System.out.println(JsonParser.serializarEstudiante(modelo));
+		HttpClient.getInstance().actualizarPerfilEstudiante(JsonParser.serializarEstudiante(modelo));		
 	}
 }
