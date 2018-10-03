@@ -3,15 +3,16 @@ package json;
 import java.io.IOException;
 
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import model.estudiante.Estudiante;
 
-public class JsonDeserializerCustom {
+public class JsonParser {
 	
-	public static <Type> Type deserialize(String json, TypeReference<Type> type){
+	private static <Type> Type deserialize(String json, TypeReference<Type> type){
 		Type deserialized = null;
 		try {
 			deserialized = new ObjectMapper().readValue(json, type);
@@ -34,5 +35,16 @@ public class JsonDeserializerCustom {
 	
 	public static Estudiante deserializarAsignaciones(String json){
 		return deserialize(json, new TypeReference<Estudiante>() {});
+	}
+
+	public static String serializarEstudiante(Estudiante estudiante) {
+		String jsonResult = "";
+		try {
+			jsonResult = new ObjectMapper().writeValueAsString(estudiante);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return jsonResult;
 	}
 }
