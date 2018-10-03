@@ -6,9 +6,14 @@ import java.util.List;
 import org.uqbar.commons.model.annotations.Observable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 
 import model.tarea.AsignacionTarea;
 
+@JsonPropertyOrder({ "code", "first_name", "last_name", "github_user" })
 @Observable
 public class Estudiante {
 	@JsonProperty("first_name")
@@ -21,9 +26,10 @@ public class Estudiante {
 	public String githubUser;
 	
 	@JsonProperty("code")
+	@JsonSerialize(using = ToStringSerializer.class)
 	public long legajo;
 	
-	@JsonProperty("assignments")
+	@JsonProperty(access = Access.WRITE_ONLY, value = "assignments")
 	private List<AsignacionTarea> asignaciones = new ArrayList<>();
 	
 	public Estudiante(String nombre, String apellido, String githubUser, long legajo) {
