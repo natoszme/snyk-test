@@ -4,12 +4,13 @@ package json;
 import org.junit.Assert;
 import org.junit.Test;
 
+import fixture.Fixture;
 import model.estudiante.Estudiante;
 import model.tarea.EnumNotaConceptual;
 import model.tarea.NotaConceptual;
 import model.tarea.NotaNumerica;
 
-public class TestJson {
+public class TestJson extends Fixture{
 	private String jsonDeMatias = "{\r\n" + 
 			"    \"code\": \"111222333\",\r\n" + 
 			"    \"first_name\": \"Matias\",\r\n" + 
@@ -98,44 +99,49 @@ public class TestJson {
 	
 	@Test
 	public void alPasarUnJsonDevuelveBienElNombreDelEstudiante() {
-		Estudiante matias = JsonDeserializerCustom.deserializarEstudiante(jsonDeMatias);
+		Estudiante matias = JsonParser.deserializarEstudiante(jsonDeMatias);
 		Assert.assertEquals("Matias", matias.getNombre());
 	}
 	
 	@Test
 	public void alPasarUnJsonDevuelveBienElApellidoDelEstudiante() {
-		Estudiante matias = JsonDeserializerCustom.deserializarEstudiante(jsonDeMatias);
+		Estudiante matias = JsonParser.deserializarEstudiante(jsonDeMatias);
 		Assert.assertEquals("Kranevitter", matias.getApellido());
 	}
 	
 	@Test
 	public void alPasarUnJsonDevuelveBienElGithubUserDelEstudiante() {
-		Estudiante matias = JsonDeserializerCustom.deserializarEstudiante(jsonDeMatias);
+		Estudiante matias = JsonParser.deserializarEstudiante(jsonDeMatias);
 		Assert.assertEquals("kranevictor", matias.getGithubUser());
 	}
 	
 	@Test
 	public void alPasarUnJsonDevuelveBienElLegajoDelEstudiante() {
-		Estudiante matias = JsonDeserializerCustom.deserializarEstudiante(jsonDeMatias);
+		Estudiante matias = JsonParser.deserializarEstudiante(jsonDeMatias);
 		Assert.assertEquals(111222333, matias.getLegajo());
 	}
 	
 	@Test
 	public void alPasarUnJsonDeAsignacionesDevuelveBienElNombreDeLaAsignacion() {
 		//List<AsignacionTarea> asignacionesMatias = JsonDeserializer.deserializarAsignaciones(jsonAsignacionesMatias);
-		Estudiante matiasConAsignaciones = JsonDeserializerCustom.deserializarAsignaciones(jsonAsignacionesMatias);
+		Estudiante matiasConAsignaciones = JsonParser.deserializarAsignaciones(jsonAsignacionesMatias);
 		Assert.assertEquals("TPA1", matiasConAsignaciones.getAsignaciones().get(0).getTarea().getNombre());
 	}
 	
 	@Test
 	public void lasNotasNumericasDeUnaAsignacionSeLevantanBien() {
-		Estudiante matiasConAsignaciones = JsonDeserializerCustom.deserializarAsignaciones(jsonAsignacionesConNotas);
+		Estudiante matiasConAsignaciones = JsonParser.deserializarAsignaciones(jsonAsignacionesConNotas);
 		Assert.assertEquals(7.0, ((NotaNumerica)matiasConAsignaciones.getAsignaciones().get(0).getUltimaNota()).valor(), 0);
 	}
 	
 	@Test
 	public void lasNotasConceptualesDeUnaAsignacionSeLevantanBien() {
-		Estudiante matiasConAsignaciones = JsonDeserializerCustom.deserializarAsignaciones(jsonConNotasConceptualesYNumericas);
+		Estudiante matiasConAsignaciones = JsonParser.deserializarAsignaciones(jsonConNotasConceptualesYNumericas);
 		Assert.assertEquals(EnumNotaConceptual.BIEN_MAS, ((NotaConceptual)matiasConAsignaciones.getAsignaciones().get(0).getUltimaNota()).valor());
+	}
+	
+	@Test
+	public void alSerializarEstudianteElJsonContieneSuNombre() {
+		Assert.assertTrue(JsonParser.serializarEstudiante(estudiante).contains("Pepe"));
 	}
 }
