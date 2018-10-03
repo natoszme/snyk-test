@@ -29,7 +29,7 @@ public class LoginHandler {
 		HttpClient.getInstance().setToken(token);
 		
 		//suponiendo que existe un estudiante en el server, por tener el token asociado
-		return new NotasService().dameEstudiante();
+		return NotasService.dameEstudiante();
 	}
 	
 	public String obtenerToken(int legajo) {
