@@ -51,4 +51,11 @@ public class HttpClient {
                  .get(ClientResponse.class);
          return response.getEntity(String.class);
     }
+
+	public void actualizarPerfilEstudiante(String estudianteSerializado) {
+		this.cliente.resource(API_NOTAS).path(RECURSO_ESTUDIANTE)
+                .accept(MediaType.APPLICATION_JSON)
+                .header("Authorization", PRE_TOKEN + " " + token)
+                .put(ClientResponse.class, estudianteSerializado);
+	}
 }
