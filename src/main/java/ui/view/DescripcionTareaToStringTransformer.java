@@ -4,11 +4,9 @@ import org.apache.commons.collections15.Transformer;
 
 import model.tarea.Tarea;
 
-public class NombreTareaToStringTransformer implements Transformer<Tarea, String> {
-
+public class DescripcionTareaToStringTransformer implements Transformer<Tarea, String>{
 	@Override
 	public String transform(Tarea tarea) {
-		return tarea.getNombre();
+		return tarea.getDescripcion();
 	}
-
 }

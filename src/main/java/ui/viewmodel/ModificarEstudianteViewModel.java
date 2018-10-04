@@ -2,7 +2,9 @@ package ui.viewmodel;
 
 import org.uqbar.commons.model.annotations.Observable;
 
+import json.JsonParser;
 import model.estudiante.Estudiante;
+import notasService.NotasService;
 
 @Observable
 public class ModificarEstudianteViewModel {
@@ -24,6 +26,10 @@ public class ModificarEstudianteViewModel {
 	//TODO revisar esto
 	public void actualizarDatosEstudiante() {
 		modelo.actualizarDatos(nombre, apellido, githubUser, legajo);
+		//System.out.println(JsonParser.serializarEstudiante(new Estudiante("a", "a", "a", 11)));
+		//System.out.println(JsonParser.serializarEstudiante(modelo));
+		Estudiante estudianteSinDecorar = new Estudiante(modelo.getNombre(), modelo.getApellido(), modelo.getGithubUser(), modelo.getLegajo());
+		NotasService.actualizarPerfil(estudianteSinDecorar);
 	}
 
 	public String getNombre() {

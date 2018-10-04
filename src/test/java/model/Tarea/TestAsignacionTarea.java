@@ -1,4 +1,4 @@
-package asignacionTarea;
+package model.Tarea;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

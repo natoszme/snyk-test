@@ -8,6 +8,9 @@ public class NotaToStringTransformer implements Transformer<Nota, String> {
 
 	@Override
 	public String transform(Nota nota) {
+		if(nota == null) {
+			return "N/D";
+		}
 		return nota.getValor();
 	}
 }

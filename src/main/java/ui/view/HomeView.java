@@ -6,23 +6,15 @@ import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.TextBox;
 import org.uqbar.arena.windows.MainWindow;
-import org.uqbar.commons.model.exceptions.UserException;
 
-import fixture.Fixture;
+import login.LoginHandler;
 
 import org.uqbar.arena.windows.ErrorsPanel;
 
 import model.estudiante.Estudiante;
 import model.repositorios.LegajoInexistenteException;
-import model.repositorios.RepoEstudiantes;
-import model.tarea.AsignacionTarea;
-import model.tarea.EnumNotaConceptual;
-import model.tarea.NotaConceptual;
-import model.tarea.NotaNumerica;
-import model.tarea.Tarea;
 import ui.viewmodel.HomeViewModel;
 
-//TODO que hace?
 @SuppressWarnings("serial")
 public class HomeView extends MainWindow<HomeViewModel>{
 	
@@ -65,41 +57,11 @@ public class HomeView extends MainWindow<HomeViewModel>{
 			legajoInexistenteError.setText("No se reconoce el legajo");
 			//supuestamente, Aena deberia cachear la siguiente excepcion pero no lo hace...
 			//throw new UserException("No se reconoce el legajo");
-			this.close();
 		}
 	}
 	
 	public static void main(String[] args) {
-		Estudiante estudiante;
-		AsignacionTarea pruebaDeIngles;
-		AsignacionTarea tpOperativos;
-		AsignacionTarea tpArena;
-		NotaConceptual mal;
-		NotaConceptual bien;
-		
-		RepoEstudiantes repo = RepoEstudiantes.getInstance();
-		
-		estudiante = new Estudiante("Pepe", "Sanchez", "pepeCapo123", 111111);
-		pruebaDeIngles = new AsignacionTarea(new Tarea("Prueba de ingles"));
-		pruebaDeIngles.calificar(new NotaNumerica(8));
-		bien = new NotaConceptual();
-		bien.setNota(EnumNotaConceptual.BIEN);
-	    tpOperativos = new AsignacionTarea(new Tarea("TP Operativos"));
-		tpOperativos.calificar(bien);
-		
-		AsignacionTarea pruebaDeLegislacion = new AsignacionTarea(new Tarea("Legislacion"));
-		pruebaDeLegislacion.calificar(new NotaNumerica(3));
-	    mal = new NotaConceptual();
-		mal.setNota(EnumNotaConceptual.MAL);
-	    tpArena = new AsignacionTarea(new Tarea("TP Arena"));
-		tpArena.calificar(mal);
-		
-		estudiante.asignarTarea(pruebaDeLegislacion);
-		estudiante.asignarTarea(tpOperativos);
-		estudiante.asignarTarea(pruebaDeIngles);
-		estudiante.asignarTarea(tpArena);		
-		
-		repo.agregarEstudiante(estudiante);
+		LoginHandler.getInstance().registrarToken(111222333, "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxMTEyMjIzMzMiLCJybmQiOiJ5SXNmZFIwN2lIR3BRRmVjYU9KT2VRPT0ifQ.9pVJGUXhrJPQ-TptNCt971l0h_1dWqWgMrHAWXJchho");
 		
 		HomeViewModel viewModel = new HomeViewModel();
 		new HomeView(viewModel).startApplication();

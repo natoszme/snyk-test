@@ -5,19 +5,38 @@ import java.util.List;
 
 import org.uqbar.commons.model.annotations.Observable;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+
 import model.tarea.AsignacionTarea;
 
+@JsonPropertyOrder({ "code", "first_name", "last_name", "github_user" })
 @Observable
 public class Estudiante {
+	@JsonProperty("first_name")
 	public String nombre;
+	
+	@JsonProperty("last_name")
 	public String apellido;
+	
+	@JsonProperty("github_user")
 	public String githubUser;
+	
+	@JsonProperty("code")
+	@JsonSerialize(using = ToStringSerializer.class)
 	public long legajo;
+	
+	@JsonProperty(access = Access.WRITE_ONLY, value = "assignments")
 	private List<AsignacionTarea> asignaciones = new ArrayList<>();
 	
 	public Estudiante(String nombre, String apellido, String githubUser, long legajo) {
 		actualizarDatos(nombre, apellido, githubUser, legajo);	
 	}
+	
+	public Estudiante() {}
 	
 	public List<AsignacionTarea> getAsignaciones(){
 		return asignaciones;
