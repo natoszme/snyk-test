@@ -20,7 +20,7 @@ public class NotaJsonDeserializer extends JsonDeserializer<Nota>{
 		ObjectCodec oc = jp.getCodec();
 		JsonNode node = oc.readTree(jp);
 		
-		//TODO esto quedo muy feo
+		//(ex)TODO esto quedo muy feo. sip pero no queda mucha otra opcion
 		Double notaNumerica = node.get("value").asDouble(-1.0);
 		
 		if(notaNumerica == -1.0) {

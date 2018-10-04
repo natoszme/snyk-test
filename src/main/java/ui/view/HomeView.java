@@ -55,7 +55,7 @@ public class HomeView extends MainWindow<HomeViewModel>{
 			//TODO puede ser que no deje crear un label aca?
 			//tampoco deja hacer esto:
 			legajoInexistenteError.setText("No se reconoce el legajo");
-			//supuestamente, Aena deberia cachear la siguiente excepcion pero no lo hace...
+			//supuestamente, Arena deberia cachear la siguiente excepcion pero no lo hace...
 			//throw new UserException("No se reconoce el legajo");
 		}
 	}

@@ -2,7 +2,6 @@ package ui.viewmodel;
 
 import org.uqbar.commons.model.annotations.Observable;
 
-import json.JsonParser;
 import model.estudiante.Estudiante;
 import notasService.NotasService;
 
@@ -23,11 +22,11 @@ public class ModificarEstudianteViewModel {
 		legajo = modelo.getLegajo();
 	}
 	
-	//TODO revisar esto
+	//TODO revisar esto. aparentemente esta ok porque arena crea una subclase de estudiante y este estudiante es de esa clase. Podriamos crear una
+	//intermedia para pasarle a arena, y nosotros quedarnos con el estudiante posta.
+	//El tema es que esta asignacion al estudiante posta tambien tendriamos que hacerla con ese modelo...
 	public void actualizarDatosEstudiante() {
 		modelo.actualizarDatos(nombre, apellido, githubUser, legajo);
-		//System.out.println(JsonParser.serializarEstudiante(new Estudiante("a", "a", "a", 11)));
-		//System.out.println(JsonParser.serializarEstudiante(modelo));
 		Estudiante estudianteSinDecorar = new Estudiante(modelo.getNombre(), modelo.getApellido(), modelo.getGithubUser(), modelo.getLegajo());
 		NotasService.actualizarPerfil(estudianteSinDecorar);
 	}
