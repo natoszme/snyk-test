@@ -1,9 +1,5 @@
 package model.tarea;
 
-import org.uqbar.commons.model.annotations.Observable;
-
-//TODO por que es necesario?
-@Observable
 public class NotaNumerica extends Nota{
 	
 	private double valorNumerico;
