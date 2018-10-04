@@ -49,6 +49,7 @@ public class AsignacionTarea {
 		this.notas = notas;
 	}
 	
+	//TODO revisar estos dos metodos que preguntan por/devuelven null
 	public Nota getUltimaNota() {
 		if(notas.size() == 0) {
 			return null;
@@ -57,6 +58,9 @@ public class AsignacionTarea {
 	}
 	
 	public boolean getAprobo() {
+		if(getUltimaNota() == null) {
+			return false;
+		}
 		return getUltimaNota().esAprobada();
 	}
 	
