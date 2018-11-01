@@ -1,0 +1,39 @@
+package router;
+
+import javax.persistence.EntityManager;
+import javax.persistence.RollbackException;
+
+import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
+import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
+
+import spark.Spark;
+
+public class Router implements TransactionalOps, WithGlobalEntityManager{
+
+	public void configure() {
+		
+		EntityManager em = entityManager();
+		
+		Spark.before("/*", (req, res) -> {
+			if(req.requestMethod() != "GET") {
+				beginTransaction();
+			}
+		});
+		
+		//Spark.get(path, route);
+		
+		Spark.after("/*", (req, res) -> {
+			if(req.requestMethod() != "GET") {
+				try {
+					commitTransaction();
+					em.clear();
+				}
+				catch (RollbackException e) {
+					rollbackTransaction();
+				}
+				
+			}
+		});
+	}
+
+}

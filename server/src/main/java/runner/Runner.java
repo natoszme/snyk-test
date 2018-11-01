@@ -1,22 +1,13 @@
-package model;
+package runner;
 
-import java.util.List;
-
-import javax.persistence.EntityManager;
-
-import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
+import router.Router;
+import spark.Spark;
+import spark.debug.DebugScreen;
 
 public class Runner {
 	public static void main(String[] args) {
-		//new Fixture().run();
-		EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
-		List<Alumno> alumnos = 
-				entityManager
-				.createQuery("from Alumno")
-				.getResultList();
-		
-		for (Alumno alumno : alumnos) {
-			System.out.println(alumno.getNombre());
-		}
+		Spark.port(9500);
+		DebugScreen.enableDebugScreen();
+		new Router().configure();
 	}
 }
