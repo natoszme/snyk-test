@@ -9,19 +9,20 @@ import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.tables.Column;
 import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.Dialog;
-import org.uqbar.arena.windows.SimpleWindow;
-import org.uqbar.arena.windows.WindowOwner;
+import org.uqbar.arena.windows.MainWindow;
 
+import httpClientService.HttpClient;
 import model.estudiante.Estudiante;
 import model.tarea.AsignacionTarea;
+import notasService.NotasService;
 import ui.viewmodel.ModificarEstudianteViewModel;
 
 //TODO que hace?
 @SuppressWarnings("serial")
-public class EstudianteView extends SimpleWindow<Estudiante>{
+public class EstudianteView extends MainWindow<Estudiante>{
 
-	public EstudianteView(WindowOwner parent, Estudiante estudiante) {
-		super(parent, estudiante);
+	public EstudianteView(Estudiante estudiante) {
+		super(estudiante);
 	}
 	
 	private void modificarEstudiante() {
@@ -31,7 +32,7 @@ public class EstudianteView extends SimpleWindow<Estudiante>{
 	}
 
 	@Override
-	protected void createFormPanel(Panel mainPanel) {
+	public void createContents(Panel mainPanel) {
 		this.setTitle("Estudiante");
 		mainPanel.setLayout(new VerticalLayout());
 		
@@ -86,8 +87,12 @@ public class EstudianteView extends SimpleWindow<Estudiante>{
 	}
 
 	//TODO y que pasa si quiero usar un panel de los de arriba?
-	@Override
 	protected void addActions(Panel mainPanel) {
 		new Button(mainPanel).setCaption("Salir").onClick(this::close);		
+	}
+	
+	public static void main(String[] args) {
+		HttpClient.setToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxMTEyMjIzMzMiLCJybmQiOiJ5SXNmZFIwN2lIR3BRRmVjYU9KT2VRPT0ifQ.9pVJGUXhrJPQ-TptNCt971l0h_1dWqWgMrHAWXJchho");
+		new EstudianteView(NotasService.dameEstudiante()).startApplication();
 	}
 }
