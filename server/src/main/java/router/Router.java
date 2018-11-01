@@ -16,6 +16,12 @@ public class Router implements TransactionalOps, WithGlobalEntityManager{
 		EntityManager em = entityManager();
 		
 		Spark.before("/*", (req, res) -> {
+			
+			if(!ControllerEstudiante.tokenValido(req))
+			{
+				//TODO devolver un json vacio, que el cliente sepa manejar
+			}
+			
 			if(req.requestMethod() != "GET") {
 				beginTransaction();
 			}

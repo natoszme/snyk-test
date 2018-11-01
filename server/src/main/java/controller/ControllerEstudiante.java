@@ -21,4 +21,9 @@ public class ControllerEstudiante {
 		return null;
 	}
 
+	public static boolean tokenValido(Request req) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
