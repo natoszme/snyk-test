@@ -23,7 +23,6 @@ public class NotasService {
 	}
 
 	public static void actualizarPerfil(Estudiante modelo) {
-		System.out.println(JsonParser.serializarEstudiante(modelo));
 		HttpClient.getInstance().actualizarPerfilEstudiante(JsonParser.serializarEstudiante(modelo));		
 	}
 }
