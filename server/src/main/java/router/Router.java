@@ -6,6 +6,7 @@ import javax.persistence.RollbackException;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
 
+import controller.ControllerEstudiante;
 import spark.Spark;
 
 public class Router implements TransactionalOps, WithGlobalEntityManager{
@@ -20,7 +21,9 @@ public class Router implements TransactionalOps, WithGlobalEntityManager{
 			}
 		});
 		
-		//Spark.get(path, route);
+		Spark.get("/student", ControllerEstudiante::obtenerEstudiante);
+		Spark.get("/student/assignments", ControllerEstudiante::obtenerAsignacionesEstudiante);
+		Spark.put("/student", ControllerEstudiante::actualizarDatosEstudiante);
 		
 		Spark.after("/*", (req, res) -> {
 			if(req.requestMethod() != "GET") {
