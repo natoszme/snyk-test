@@ -7,6 +7,7 @@ import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
 
 import controller.ControllerEstudiante;
+import security.InvalidTokenException;
 import spark.Spark;
 
 public class Router implements TransactionalOps, WithGlobalEntityManager{
@@ -17,8 +18,10 @@ public class Router implements TransactionalOps, WithGlobalEntityManager{
 		
 		Spark.before("/*", (req, res) -> {
 			
-			if(!ControllerEstudiante.tokenValido(req))
-			{
+			try	{
+				ControllerEstudiante.autenticarAlumno(req, res);			
+			}
+			catch (InvalidTokenException e) {
 				//TODO devolver un json vacio, que el cliente sepa manejar
 			}
 			

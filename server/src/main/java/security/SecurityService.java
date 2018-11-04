@@ -8,13 +8,9 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 
 public class SecurityService {
 
-	private String secret;
-
-	public SecurityService(String secret) {
-		this.secret = secret;
-	}
+	private static String secret = "soyUnCodigoSecreto";
 	
-	public Long user(String token) {
+	public static Long user(String token) {
 		try {
 			Algorithm algorithm = Algorithm.HMAC256(secret);
 			JWTVerifier verifier = JWT.require(algorithm).build();

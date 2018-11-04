@@ -1,5 +1,6 @@
 package controller;
 
+import security.SecurityService;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -21,9 +22,11 @@ public class ControllerEstudiante {
 		return null;
 	}
 
-	public static boolean tokenValido(Request req) {
-		// TODO Auto-generated method stub
-		return false;
+	public static void autenticarAlumno(Request req, Response res) {
+		String token = req.headers("Authorization").replace("Bearer ", "");
+		Long id = SecurityService.user(token);
+		
+		res.cookie("idAlumno", id.toString());		
 	}
 
 }
