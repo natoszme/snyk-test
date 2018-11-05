@@ -9,17 +9,28 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 public class Asignacion {
 
 	@Id @GeneratedValue
+	@JsonIgnore
 	private Long id;
 	
 	@Transient
+	@JsonProperty("grades")
 	private List<String> notas;	
 	
 	@ManyToOne
+	@JsonIgnore
 	private Tarea tarea;
+	
+	@JsonProperty("description")
+	public void getTituloDescripcion() {
+		tarea.getEnunciado();
+	}	
 	
 	public Asignacion(Tarea tarea) {
 		this.tarea = tarea;

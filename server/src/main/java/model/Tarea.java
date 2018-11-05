@@ -6,13 +6,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 public class Tarea {
 	
+	@JsonIgnore
 	@Id @GeneratedValue
 	private Long id;
 	
+	@JsonProperty("description")
 	private Date fechaLimiteDeEntrega;
+	
+	@JsonProperty("title")
 	private String enunciado;
 	
 	public Tarea(Date fechaLimiteDeEntrega, String enunciado) {

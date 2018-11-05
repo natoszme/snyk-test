@@ -10,14 +10,19 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 @JsonPropertyOrder({ "code", "first_name", "last_name", "github_user" })
+@JsonInclude(Include.NON_NULL)
 public class Estudiante {
 
 	@Id @GeneratedValue
+	@JsonProperty("code")
 	private Long id;
 	
 	@JsonProperty("code")
@@ -40,11 +45,11 @@ public class Estudiante {
 	
 	@OneToMany
 	@JoinColumn(name = "alumno_id")
-	@JsonIgnore
+	@JsonProperty(access = Access.READ_ONLY, value = "assignments")
 	private List<Asignacion> asignaciones = new ArrayList<>();
 	
 	@SuppressWarnings("unused")
-	private Estudiante() {}
+	public Estudiante() {}
 	
 	public Estudiante(String legajo, String nombre, String apellido, String email, String githubUser) {
 		super();
@@ -86,10 +91,6 @@ public class Estudiante {
 	public void setSecretCode(String secretCode) {
 		this.secretCode = secretCode;
 	}
-	
-	public void asignarTarea(Tarea tarea) {
-		this.asignaciones.add(new Asignacion(tarea));
-	}
 
 	public String getEmail() {
 		return email;
@@ -116,6 +117,14 @@ public class Estudiante {
 		apellido = estudiante.getApellido();
 		legajo = estudiante.getLegajo();
 		githubUser = estudiante.getGithubUser();
+	}
+
+	public void agregarAsignacion(Asignacion asignacion) {
+		asignaciones.add(asignacion);		
+	}
+
+	public void setAsignaciones(List<Asignacion> asignaciones) {
+		this.asignaciones = asignaciones;
 	}
 
 }

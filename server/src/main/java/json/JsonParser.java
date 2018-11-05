@@ -13,7 +13,10 @@ public class JsonParser {
 	public static String obtenerJsonEstudiante(Estudiante estudiante) {
 		String jsonResult = "";
 		try {
-			jsonResult = new ObjectMapper().writeValueAsString(estudiante);
+			Estudiante estudianteSinAsignaciones = new Estudiante();
+			estudianteSinAsignaciones.actualizarDatos(estudiante);
+			estudianteSinAsignaciones.setAsignaciones(null);
+			jsonResult = new ObjectMapper().writeValueAsString(estudianteSinAsignaciones);
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -24,7 +27,9 @@ public class JsonParser {
 	public static String obtenerJsonAsignaciones(Estudiante estudiante) {
 		String jsonResult = "";
 		try {
-			jsonResult = new ObjectMapper().writeValueAsString(estudiante.getAsignaciones());
+			Estudiante estudianteConAsignaciones = new Estudiante();
+			estudianteConAsignaciones.setAsignaciones(estudiante.getAsignaciones());
+			jsonResult = new ObjectMapper().writeValueAsString(estudianteConAsignaciones);
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
