@@ -19,16 +19,10 @@ public class Fixture {
 	
 	@Before
 	public void before() {
-		estudianteDePrueba();
-	}
-	
-	public Estudiante estudianteDePrueba() {
 		notitasDePedrito.setNotas(Arrays.asList("R", "8"));
 		pedrito.agregarAsignacion(notitasDePedrito);
 		
 		tpPdepPedrito.setNotas(Arrays.asList("M", "R", "9"));
 		pedrito.agregarAsignacion(tpPdepPedrito);
-		
-		return pedrito;
 	}
 }
