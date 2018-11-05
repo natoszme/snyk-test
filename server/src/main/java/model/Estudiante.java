@@ -35,9 +35,6 @@ public class Estudiante {
 	private String apellido;
 	
 	@JsonIgnore
-	private String secretCode;
-	
-	@JsonIgnore
 	private String email;
 	
 	@JsonProperty("github_user")
@@ -82,14 +79,6 @@ public class Estudiante {
 
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
-	}
-
-	public String getSecretCode() {
-		return secretCode;
-	}
-
-	public void setSecretCode(String secretCode) {
-		this.secretCode = secretCode;
 	}
 
 	public String getEmail() {
