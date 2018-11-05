@@ -10,7 +10,7 @@ public class TestHttpClient {
 	
 	@Before
 	public void before() {
-		HttpClient.getInstance().setToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxMTEyMjIzMzMiLCJybmQiOiJ5SXNmZFIwN2lIR3BRRmVjYU9KT2VRPT0ifQ.9pVJGUXhrJPQ-TptNCt971l0h_1dWqWgMrHAWXJchho");
+		HttpClient.getInstance().setToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZEVzdHVkaWFudGUiOjF9.lRklsdMeqKxqO-mrmL487_c_f25f00AOb8tPmZhjMYE");
 	}
 	
 	@Test
@@ -22,6 +22,9 @@ public class TestHttpClient {
 	@Test
 	public void elJsonDevueltoContieneNombre() {
 		String jsonResponse = HttpClient.getInstance().dameEstudiante();
+		
+		System.out.println(jsonResponse);
+		
 		Assert.assertTrue(jsonResponse.contains("first_name"));
 	}
 	
