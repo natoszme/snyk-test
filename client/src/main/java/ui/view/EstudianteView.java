@@ -14,6 +14,7 @@ import org.uqbar.arena.windows.MainWindow;
 import httpClientService.HttpClient;
 import model.estudiante.Estudiante;
 import model.tarea.AsignacionTarea;
+import notasService.EstudianteNoIdentificadoException;
 import notasService.NotasService;
 import ui.viewmodel.ModificarEstudianteViewModel;
 
@@ -93,6 +94,15 @@ public class EstudianteView extends MainWindow<Estudiante>{
 	
 	public static void main(String[] args) {
 		HttpClient.getInstance().setToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZEVzdHVkaWFudGUiOjF9.lRklsdMeqKxqO-mrmL487_c_f25f00AOb8tPmZhjMYE");
-		new EstudianteView(NotasService.dameEstudiante()).startApplication();
+		
+		Estudiante estudiante = null;
+		try {
+			estudiante = NotasService.dameEstudiante();
+		} catch (EstudianteNoIdentificadoException e) {
+			System.out.println("No se reconoce al estudiante");
+			System.exit(-1);
+		}
+		
+		new EstudianteView(estudiante).startApplication();
 	}
 }

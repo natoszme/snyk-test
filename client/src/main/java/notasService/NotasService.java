@@ -7,15 +7,20 @@ import model.estudiante.Estudiante;
 
 public class NotasService {
 	
-    public static Estudiante dameEstudiante() {
+    public static Estudiante dameEstudiante()  throws EstudianteNoIdentificadoException{
     	Estudiante estudianteConPerfil = obtenerPerfilEstudiante();
+    	
+    	if(estudianteConPerfil.getLegajo() == 0) {
+			throw new EstudianteNoIdentificadoException();
+		}    	
+    	
     	Estudiante estudianteConAsignaciones = obtenerEstudianteConAsignaciones();
     	estudianteConPerfil.setAsignaciones(estudianteConAsignaciones.getAsignaciones());
     	return estudianteConPerfil;
     }
 
 	private static Estudiante obtenerPerfilEstudiante() {
-		return JsonParser.deserializarEstudiante(HttpClient.getInstance().dameEstudiante());
+		return JsonParser.deserializarEstudiante(HttpClient.getInstance().dameEstudiante());		
 	}
 
 	private static Estudiante obtenerEstudianteConAsignaciones() {
