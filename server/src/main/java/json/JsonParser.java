@@ -3,6 +3,7 @@ package json;
 import java.io.IOException;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -40,7 +41,7 @@ public class JsonParser {
 	public static Estudiante obtenerEstudianteDeJson(String json) {
 		Estudiante estudiante = null;
 		try {
-			estudiante = new ObjectMapper().readValue(json, Estudiante.class);
+			estudiante = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false).readValue(json, Estudiante.class);
 		} catch (JsonParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
