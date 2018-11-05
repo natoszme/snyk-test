@@ -9,34 +9,50 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 @Entity
+@JsonPropertyOrder({ "code", "first_name", "last_name", "github_user" })
 public class Estudiante {
 
 	@Id @GeneratedValue
 	private Long id;
 	
+	@JsonProperty("code")
 	private String legajo;
+	
+	@JsonProperty("first_name")
 	private String nombre;
+	
+	@JsonProperty("last_name")
 	private String apellido;
+	
+	@JsonIgnore
 	private String secretCode;
+	
+	@JsonIgnore
 	private String email;
+	
+	@JsonProperty("github_user")
 	private String githubUser;
 	
 	@OneToMany
 	@JoinColumn(name = "alumno_id")
+	@JsonIgnore
 	private List<Asignacion> asignaciones = new ArrayList<>();
 	
 	@SuppressWarnings("unused")
 	private Estudiante() {}
 	
-	public Estudiante(String legajo, String nombre, String email, String githubUser, String apellido, String secretCode) {
+	public Estudiante(String legajo, String nombre, String apellido, String email, String githubUser) {
 		super();
 		this.legajo = legajo;
 		this.nombre = nombre;
 		this.email = email;
 		this.githubUser = githubUser;
 		this.apellido = apellido;
-		this.secretCode = secretCode;
 	}
 
 	public String getLegajo() {
