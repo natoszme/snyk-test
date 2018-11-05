@@ -14,6 +14,7 @@ public class ControllerEstudiante {
 	
 	public static void autenticarAlumno(Request req, Response res) {
 		String token = req.headers("Authorization").replace("Bearer ", "");
+		
 		long id = SecurityService.user(token);
 		
 		req.session().attribute(nombreIdSession, id);
@@ -33,7 +34,7 @@ public class ControllerEstudiante {
 	}
 
 	public static String obtenerAsignacionesEstudiante(Request req, Response res) {
-		Estudiante estudiante = RepoEstudiantes.getInstance().estudiante(idEstudiante(req));
+		Estudiante estudiante = RepoEstudiantes.getInstance().estudiante(idEstudiante(req));		
 		return JsonParser.obtenerJsonAsignaciones(estudiante);
 	}
 	
