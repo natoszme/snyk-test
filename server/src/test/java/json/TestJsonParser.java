@@ -18,10 +18,15 @@ public class TestJsonParser {
 	
 	@Before
 	public void before() {
-		Tarea tpNotitas = new Tarea(new Date(), "Hacer el tp de notitas");
+		Tarea tpNotitas = new Tarea("TP Notitas", "Hacer el tp de notitas", new Date());
 		Asignacion notitasDePedrito = new Asignacion(tpNotitas);
 		notitasDePedrito.setNotas(Arrays.asList("R", "8"));
 		pedrito.agregarAsignacion(notitasDePedrito);
+		
+		Tarea tpPdep = new Tarea("TP Objetos PDEP", "En esta entrega modelaremos los personajes de lucha...", new Date());
+		Asignacion tpPdepPedrito = new Asignacion(tpPdep);
+		tpPdepPedrito.setNotas(Arrays.asList("M", "R", "9"));
+		pedrito.agregarAsignacion(tpPdepPedrito);
 	}
 	
 	@Test

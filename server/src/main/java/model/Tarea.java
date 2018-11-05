@@ -16,16 +16,18 @@ public class Tarea {
 	@Id @GeneratedValue
 	private Long id;
 	
-	@JsonProperty("description")
+	private String nombre;
+
 	private Date fechaLimiteDeEntrega;
 	
 	@JsonProperty("title")
 	private String enunciado;
 	
-	public Tarea(Date fechaLimiteDeEntrega, String enunciado) {
+	public Tarea(String nombre, String enunciado, Date fechaLimiteDeEntrega) {
 		super();
 		this.fechaLimiteDeEntrega = fechaLimiteDeEntrega;
 		this.enunciado = enunciado;
+		this.nombre = nombre;
 	}
 
 	public String getEnunciado() {
@@ -42,6 +44,10 @@ public class Tarea {
 
 	public void setFechaLimiteDeEntrega(Date fechaLimiteDeEntrega) {
 		this.fechaLimiteDeEntrega = fechaLimiteDeEntrega;
+	}
+	
+	public String getNombre() {
+		return nombre;
 	}
 
 }

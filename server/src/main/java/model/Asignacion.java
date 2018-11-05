@@ -11,8 +11,10 @@ import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @Entity
+@JsonPropertyOrder({ "title", "description", "grades" })
 public class Asignacion {
 
 	@Id @GeneratedValue
@@ -28,9 +30,14 @@ public class Asignacion {
 	private Tarea tarea;
 	
 	@JsonProperty("description")
-	public void getTituloDescripcion() {
-		tarea.getEnunciado();
-	}	
+	public String getDescripcionTarea() {
+		return tarea.getEnunciado();
+	}
+	
+	@JsonProperty("title")
+	public String getTituloTarea() {
+		return tarea.getNombre();
+	}
 	
 	public Asignacion(Tarea tarea) {
 		this.tarea = tarea;
