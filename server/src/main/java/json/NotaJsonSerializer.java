@@ -14,8 +14,6 @@ public class NotaJsonSerializer extends JsonSerializer<List<String>> {
 	public void serialize(List<String> notas, JsonGenerator jsonGenerator, SerializerProvider sp) throws IOException {
 		List<String> notasParaJson = notas.stream().map(nota -> jsonDeNota(nota)).collect(Collectors.toList());
 		
-		System.out.println(notasParaJson);
-		
 		try {
 			jsonGenerator.writeString(notasParaJson.toString());
 		} catch (IOException e) {
