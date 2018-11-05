@@ -27,9 +27,13 @@ public class ControllerEstudiante {
 	public static void limpiarSession(Request req) {
 		req.session().removeAttribute(nombreIdSession);
 	}
+	
+	private static Estudiante obtenerEstudianteDeRepo(Request req) {
+		return RepoEstudiantes.getInstance().estudiante(idEstudiante(req));
+	}
 
 	public static String obtenerEstudiante(Request req, Response res) {
-		Estudiante estudiante = RepoEstudiantes.getInstance().estudiante(idEstudiante(req));
+		Estudiante estudiante = obtenerEstudianteDeRepo(req);
 		return JsonParser.obtenerJsonEstudiante(estudiante);
 	}
 
@@ -40,7 +44,7 @@ public class ControllerEstudiante {
 	
 	public static Route actualizarDatosEstudiante(Request req, Response res) {
 		Estudiante estudiante = JsonParser.obtenerEstudianteDeJson(req.body());
-		estudiante.actualizarDatos(estudiante);
+		obtenerEstudianteDeRepo(req).actualizarDatos(estudiante);
 		return null;
 	}
 
