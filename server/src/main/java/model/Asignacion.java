@@ -12,6 +12,9 @@ import javax.persistence.Transient;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import json.NotaJsonSerializer;
 
 @Entity
 @JsonPropertyOrder({ "title", "description", "grades" })
@@ -23,6 +26,7 @@ public class Asignacion {
 	
 	@Transient
 	@JsonProperty("grades")
+	@JsonSerialize(using = NotaJsonSerializer.class)
 	private List<String> notas;	
 	
 	@ManyToOne
