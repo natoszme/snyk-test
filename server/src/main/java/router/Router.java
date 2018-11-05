@@ -23,6 +23,7 @@ public class Router implements TransactionalOps, WithGlobalEntityManager{
 			}
 			catch (InvalidTokenException e) {
 				//TODO devolver un json vacio, que el cliente sepa manejar
+				//con halt, para que no siga ejecutando lo de abajo
 			}
 			
 			if(req.requestMethod() != "GET") {
@@ -35,6 +36,9 @@ public class Router implements TransactionalOps, WithGlobalEntityManager{
 		Spark.put("/student", ControllerEstudiante::actualizarDatosEstudiante);
 		
 		Spark.after("/*", (req, res) -> {
+			
+			ControllerEstudiante.limpiarSession(req);
+			
 			if(req.requestMethod() != "GET") {
 				try {
 					commitTransaction();

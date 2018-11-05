@@ -10,7 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Alumno {
+public class Estudiante {
 
 	@Id @GeneratedValue
 	private Long id;
@@ -27,9 +27,9 @@ public class Alumno {
 	private List<Asignacion> asignaciones = new ArrayList<>();
 	
 	@SuppressWarnings("unused")
-	private Alumno() {}
+	private Estudiante() {}
 	
-	public Alumno(String legajo, String nombre, String email, String githubUser, String apellido, String secretCode) {
+	public Estudiante(String legajo, String nombre, String email, String githubUser, String apellido, String secretCode) {
 		super();
 		this.legajo = legajo;
 		this.nombre = nombre;
