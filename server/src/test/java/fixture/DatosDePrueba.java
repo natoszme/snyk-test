@@ -8,12 +8,10 @@ import javax.persistence.EntityManager;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
-
 import model.Asignacion;
 import model.Estudiante;
 import model.Tarea;
+import security.SecurityService;
 
 public class DatosDePrueba implements TransactionalOps, WithGlobalEntityManager{
 	
@@ -44,17 +42,6 @@ public class DatosDePrueba implements TransactionalOps, WithGlobalEntityManager{
 			em.persist(pedrito);
 		});
 		
-		generarTokenPara(pedrito);
-	}
-	
-	public void generarTokenPara(Estudiante estudiante) {
-		String secret = "god";
-		Algorithm algorithm = Algorithm.HMAC256(secret);
-		String token = JWT.create()
-		    .withClaim("user", estudiante.getId())
-		    .sign(algorithm);
-		
-		System.out.println(estudiante.getId());
-		System.out.println(token);
+		System.out.println(SecurityService.generarTokenPara(pedrito.getId()));
 	}
 }
