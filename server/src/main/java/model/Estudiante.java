@@ -90,5 +90,16 @@ public class Estudiante {
 	public void setGithubUser(String githubUser) {
 		this.githubUser = githubUser;
 	}
+	
+	public List<Asignacion> getAsignaciones() {
+		return asignaciones;
+	}
+
+	public void actualizarDatos(Estudiante estudiante) {
+		nombre = estudiante.getNombre();
+		apellido = estudiante.getApellido();
+		legajo = estudiante.getLegajo();
+		githubUser = estudiante.getGithubUser();
+	}
 
 }

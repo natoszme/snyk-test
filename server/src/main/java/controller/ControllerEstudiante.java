@@ -26,19 +26,19 @@ public class ControllerEstudiante {
 		req.session().removeAttribute(nombreIdSession);
 	}
 
-	public static Route obtenerEstudiante(Request req, Response res) {
+	public static String obtenerEstudiante(Request req, Response res) {
 		Estudiante estudiante = RepoEstudiantes.getInstance().estudiante(idEstudiante(req));
-		JsonParser.jsonEstudiante(estudiante);
-		return null;
+		return JsonParser.obtenerJsonEstudiante(estudiante);
 	}
 
-	public static Route obtenerAsignacionesEstudiante(Request req, Response res) {
-		// TODO Auto-generated method stub
-		return null;
+	public static String obtenerAsignacionesEstudiante(Request req, Response res) {
+		Estudiante estudiante = RepoEstudiantes.getInstance().estudiante(idEstudiante(req));
+		return JsonParser.obtenerJsonAsignaciones(estudiante);
 	}
 	
 	public static Route actualizarDatosEstudiante(Request req, Response res) {
-		// TODO Auto-generated method stub
+		Estudiante estudiante = JsonParser.obtenerEstudianteDeJson(req.body());
+		estudiante.actualizarDatos(estudiante);
 		return null;
 	}
 
