@@ -6,12 +6,12 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 
 public class HttpClient {
-	private static Client cliente;
-    private static final String API_NOTAS = "http://notitas.herokuapp.com";
-    private static final String PRE_TOKEN = "Bearer";
-    private static String token;
-    private static final String RECURSO_ESTUDIANTE = "student";
-    private static final String RECURSO_TAREAS = "assignments";
+	private Client cliente;
+    private final String API_NOTAS = "http://localhost:9500";
+    private final String PRE_TOKEN = "Bearer";
+    private String token;
+    private final String RECURSO_ESTUDIANTE = "student";
+    private final String RECURSO_TAREAS = "assignments";
     
     private static HttpClient instancia;
     
@@ -28,11 +28,11 @@ public class HttpClient {
         //para agregarle filtros en las respuestas (por ejemplo, para loguear).
     }
     
-    public static void setToken(String nuevoToken) {
+    public void setToken(String nuevoToken) {
     	token = nuevoToken;
     }
     
-    public static String getToken() {
+    public String getToken() {
 		return token;
 	}
     
