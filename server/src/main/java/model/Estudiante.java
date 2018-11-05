@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 public class Estudiante {
 
 	@Id @GeneratedValue
-	@JsonProperty("code")
+	@JsonIgnore
 	private Long id;
 	
 	@JsonProperty("code")
@@ -125,6 +125,10 @@ public class Estudiante {
 
 	public void setAsignaciones(List<Asignacion> asignaciones) {
 		this.asignaciones = asignaciones;
+	}
+
+	public long getId() {
+		return id;
 	}
 
 }
