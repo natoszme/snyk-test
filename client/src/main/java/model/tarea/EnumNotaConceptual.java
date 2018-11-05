@@ -5,12 +5,29 @@ public enum EnumNotaConceptual {
 
 	//TODO esto tambien quedo feo
 	public static EnumNotaConceptual dameEquivalente(String notaConceptual) {
-		if(notaConceptual.equals("B+")) {
-			return EnumNotaConceptual.BIEN_MAS;
+		
+		if(notaConceptual.equals("M")) {
+			return EnumNotaConceptual.MAL;
+		}
+		
+		if(notaConceptual.equals("R-")) {
+			return  EnumNotaConceptual.REGULAR_MENOS;
+		}
+		
+		if(notaConceptual.equals("R+")) {
+			return EnumNotaConceptual.REGULAR_MAS;
 		}
 		
 		if(notaConceptual.equals("B-")) {
 			return  EnumNotaConceptual.BIEN_MENOS;
+		}
+		
+		if(notaConceptual.equals("B")) {
+			return EnumNotaConceptual.BIEN;
+		}
+		
+		if(notaConceptual.equals("B+")) {
+			return  EnumNotaConceptual.BIEN_MAS;
 		}
 		
 		return null;
