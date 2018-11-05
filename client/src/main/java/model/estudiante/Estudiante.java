@@ -33,7 +33,7 @@ public class Estudiante {
 	private List<AsignacionTarea> asignaciones = new ArrayList<>();
 	
 	public Estudiante(String nombre, String apellido, String githubUser, long legajo) {
-		actualizarDatos(nombre, apellido, githubUser, legajo);	
+		actualizarDatos(nombre, apellido, githubUser, legajo);
 	}
 	
 	public Estudiante() {}
