@@ -92,7 +92,7 @@ public class EstudianteView extends MainWindow<Estudiante>{
 	}
 	
 	public static void main(String[] args) {
-		HttpClient.setToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxMTEyMjIzMzMiLCJybmQiOiJ5SXNmZFIwN2lIR3BRRmVjYU9KT2VRPT0ifQ.9pVJGUXhrJPQ-TptNCt971l0h_1dWqWgMrHAWXJchho");
+		HttpClient.setToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoxfQ.GDCk-9yZwlADFew9jI551Izq9Dj3SYsCfEL5qcUZYlM");
 		new EstudianteView(NotasService.dameEstudiante()).startApplication();
 	}
 }
