@@ -31,6 +31,9 @@ public class TestHttpClient {
 	@Test
 	public void elJsonDevuelveLasAsignaciones() {
 		String jsonResponse = HttpClient.getInstance().dameAsignaciones();
+		
+		System.out.println(jsonResponse);
+		
 		Assert.assertTrue(jsonResponse.contains("assignments"));
 	}
 }

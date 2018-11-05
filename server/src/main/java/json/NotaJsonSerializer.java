@@ -14,8 +14,11 @@ public class NotaJsonSerializer extends JsonSerializer<List<String>> {
 	public void serialize(List<String> notas, JsonGenerator jsonGenerator, SerializerProvider sp) throws IOException {
 		List<String> notasParaJson = notas.stream().map(nota -> jsonDeNota(nota)).collect(Collectors.toList());
 		
+		System.out.println(notasParaJson);
+		
 		try {
-			jsonGenerator.writeString(notasParaJson.toString());
+			jsonGenerator.writeRaw(": ");
+			jsonGenerator.writeRaw(notasParaJson.toString());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -23,6 +26,6 @@ public class NotaJsonSerializer extends JsonSerializer<List<String>> {
 	}
 
 	private String jsonDeNota(String nota) {
-		return "{value: '" + nota + "'}";
+		return "{\"value\": \"" + nota + "\"}";
 	}
 }
