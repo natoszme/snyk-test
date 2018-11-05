@@ -29,6 +29,8 @@ public class Tarea {
 		this.enunciado = enunciado;
 		this.nombre = nombre;
 	}
+	
+	public Tarea() {}
 
 	public String getEnunciado() {
 		return enunciado;

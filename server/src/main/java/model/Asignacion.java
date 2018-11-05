@@ -47,6 +47,8 @@ public class Asignacion {
 		this.tarea = tarea;
 		this.notas = new ArrayList<>();
 	}
+	
+	public Asignacion() {}
 
 	public List<String> getNotas() {
 		return notas;
