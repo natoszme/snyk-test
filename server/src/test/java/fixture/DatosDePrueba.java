@@ -26,10 +26,10 @@ public class DatosDePrueba implements TransactionalOps, WithGlobalEntityManager{
 		
 	public void configurar() {
 		
-		notitasDePedrito.setNotas(Arrays.asList("R", "8"));
+		notitasDePedrito.setNotas(Arrays.asList("R", "8", "B+"));
 		pedrito.agregarAsignacion(notitasDePedrito);
 		
-		tpPdepPedrito.setNotas(Arrays.asList("M", "R", "9"));
+		tpPdepPedrito.setNotas(Arrays.asList("M", "R", "9", "M"));
 		pedrito.agregarAsignacion(tpPdepPedrito);
 		
 		withTransaction(() -> {	
