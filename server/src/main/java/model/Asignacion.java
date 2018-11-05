@@ -3,11 +3,11 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,7 +24,7 @@ public class Asignacion {
 	@JsonIgnore
 	private Long id;
 	
-	@Transient
+	@ElementCollection
 	@JsonProperty("grades")
 	@JsonSerialize(using = NotaJsonSerializer.class)
 	private List<String> notas;	
