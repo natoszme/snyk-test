@@ -33,7 +33,7 @@ public class Router implements TransactionalOps, WithGlobalEntityManager{
 		});
 		
 		Spark.get("/student", ControllerEstudiante::obtenerEstudiante, new EstudianteToJsonTransformer());
-		Spark.get("/student/assignments", ControllerEstudiante::obtenerAsignacionesEstudiante, new EstudianteToAsignacionesJsonTransformer());
+		Spark.get("/student/assignments", ControllerEstudiante::obtenerEstudiante, new EstudianteToAsignacionesJsonTransformer());
 		Spark.put("/student", ControllerEstudiante::actualizarDatosEstudiante);
 		
 		Spark.after("/*", (req, res) -> {

@@ -35,10 +35,6 @@ public class ControllerEstudiante {
 	public static Estudiante obtenerEstudiante(Request req, Response res) {
 		return obtenerEstudianteDeRepo(req);
 	}
-
-	public static Estudiante obtenerAsignacionesEstudiante(Request req, Response res) {
-		return RepoEstudiantes.getInstance().estudiante(idEstudiante(req));
-	}
 	
 	public static Route actualizarDatosEstudiante(Request req, Response res) {
 		Estudiante estudiante = JsonParser.obtenerEstudianteDeJson(req.body());
