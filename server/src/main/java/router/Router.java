@@ -38,8 +38,6 @@ public class Router implements TransactionalOps, WithGlobalEntityManager{
 		
 		Spark.after("/*", (req, res) -> {
 			
-			ControllerEstudiante.limpiarSession(req);
-			
 			if(req.requestMethod() != "GET") {
 				try {
 					commitTransaction();
