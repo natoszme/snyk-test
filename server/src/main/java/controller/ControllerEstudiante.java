@@ -17,9 +17,15 @@ public class ControllerEstudiante {
 		
 		long id = SecurityService.user(token);
 		
-		req.session().attribute(nombreIdSession, id);
+		setearSession(req, id);
 	}
 	
+	private static void setearSession(Request req, long id) {
+		if(req.session().attributes().isEmpty()) {
+			req.session().attribute(nombreIdSession, id);
+		}		
+	}
+
 	private static long idEstudiante(Request req) {
 		return req.session().attribute(nombreIdSession);
 	}
