@@ -32,14 +32,12 @@ public class ControllerEstudiante {
 		return RepoEstudiantes.getInstance().estudiante(idEstudiante(req));
 	}
 
-	public static String obtenerEstudiante(Request req, Response res) {
-		Estudiante estudiante = obtenerEstudianteDeRepo(req);
-		return JsonParser.obtenerJsonEstudiante(estudiante);
+	public static Estudiante obtenerEstudiante(Request req, Response res) {
+		return obtenerEstudianteDeRepo(req);
 	}
 
-	public static String obtenerAsignacionesEstudiante(Request req, Response res) {
-		Estudiante estudiante = RepoEstudiantes.getInstance().estudiante(idEstudiante(req));		
-		return JsonParser.obtenerJsonAsignaciones(estudiante);
+	public static Estudiante obtenerAsignacionesEstudiante(Request req, Response res) {
+		return RepoEstudiantes.getInstance().estudiante(idEstudiante(req));
 	}
 	
 	public static Route actualizarDatosEstudiante(Request req, Response res) {

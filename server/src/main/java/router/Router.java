@@ -7,6 +7,8 @@ import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
 
 import controller.ControllerEstudiante;
+import router.transformer.EstudianteToAsignacionesJsonTransformer;
+import router.transformer.EstudianteToJsonTransformer;
 import security.InvalidTokenException;
 import spark.Spark;
 
@@ -30,8 +32,8 @@ public class Router implements TransactionalOps, WithGlobalEntityManager{
 			}
 		});
 		
-		Spark.get("/student", ControllerEstudiante::obtenerEstudiante);
-		Spark.get("/student/assignments", ControllerEstudiante::obtenerAsignacionesEstudiante);
+		Spark.get("/student", ControllerEstudiante::obtenerEstudiante, new EstudianteToJsonTransformer());
+		Spark.get("/student/assignments", ControllerEstudiante::obtenerAsignacionesEstudiante, new EstudianteToAsignacionesJsonTransformer());
 		Spark.put("/student", ControllerEstudiante::actualizarDatosEstudiante);
 		
 		Spark.after("/*", (req, res) -> {
