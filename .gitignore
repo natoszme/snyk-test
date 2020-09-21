@@ -97,3 +97,6 @@ hs_err_pid*
 
 # End of https://www.gitignore.io/api/java,eclipse
 /target/
+
+# Node files
+node_modules/
