@@ -4,6 +4,6 @@ node {
     }
 
     stage('Snyk verify') {
-        snykSecurity snykInstallation: 'Snyk', snykTokenId: 'SNYK_TOKEN', targetFile: './server/pom.xml'
+        snykSecurity snykInstallation: 'Snyk', snykTokenId: 'SNYK_TOKEN'
     }
 }
