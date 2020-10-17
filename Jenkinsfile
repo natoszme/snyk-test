@@ -4,7 +4,6 @@ node {
     }
     
     stage('Download Snyk CLI') {
-        steps {
             sh '''
                 latest_version=$(curl -Is "https://github.com/snyk/snyk/releases/latest" | grep "Location" | sed s#.*tag/##g | tr -d "\r")
                 echo "Latest Snyk CLI Version: ${latest_version}"
@@ -15,15 +14,12 @@ node {
                 ls -la
                 ./snyk -v
             '''
-        }
     }
 
     // Run snyk test to check for vulnerabilities and fail the build if any are found
     // Consider using --severity-threshold=<low|medium|high> for more granularity (see snyk help for more info).
     stage('Snyk Test using Snyk CLI') {
-        steps {
             sh './snyk test --json'
-        }
     }
 
     /*stage('Snyk verify') {
