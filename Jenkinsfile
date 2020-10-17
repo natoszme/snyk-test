@@ -4,6 +4,6 @@ node {
     }
 
     stage('Snyk verify') {
-        snykSecurity snykInstallation: 'Snyk', snykTokenId: 'SNYK_TOKEN'
+        snykSecurity additionalArguments: '--docker kariae/symfony-php', snykInstallation: 'Snyk', snykTokenId: 'SNYK_TOKEN'
     }
 }
