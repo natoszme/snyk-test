@@ -24,8 +24,7 @@ node {
     }*/
 
     stage('Snyk verify') {
-        sh 'echo "user and group: ${$USER}:${$GROUP}"'
-        sh 'sudo chown -R  ~/.config'
+        sh 'sudo chown -R ~/.config'
         snykSecurity additionalArguments: '--debug --docker kariae/symfony-php', snykInstallation: 'Snyk', snykTokenId: 'SNYK_TOKEN'
     }
 }
