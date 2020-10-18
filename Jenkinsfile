@@ -3,7 +3,7 @@ node {
         checkout scm
     }
     
-    stage('Download Snyk CLI') {
+    /*stage('Download Snyk CLI') {
             sh '''
                 latest_version=v1.414.1
                 echo "Latest Snyk CLI Version: ${latest_version}"
@@ -14,16 +14,16 @@ node {
                 ls -la
                 ./snyk -v
             '''
-    }
+    }*/
 
     // Run snyk test to check for vulnerabilities and fail the build if any are found
     // Consider using --severity-threshold=<low|medium|high> for more granularity (see snyk help for more info).
-    stage('Snyk Test using Snyk CLI') {
+    /*stage('Snyk Test using Snyk CLI') {
             sh './snyk auth 04dd0216-08cd-4bc1-8b29-15398683eefb'
-            sh './snyk test --docker kariae/symfony-php'
-    }
-
-    /*stage('Snyk verify') {
-        snykSecurity additionalArguments: '--docker kariae/symfony-php', snykInstallation: 'Snyk', snykTokenId: 'SNYK_TOKEN'
+            //sh './snyk test --docker kariae/symfony-php'
     }*/
+
+    stage('Snyk verify') {
+        snykSecurity snykInstallation: 'Snyk', snykTokenId: 'SNYK_TOKEN'
+    }
 }
