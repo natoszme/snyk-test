@@ -24,7 +24,6 @@ node {
     }*/
 
     stage('Snyk verify') {
-        sh 'sudo chown -R ~/.config'
         snykSecurity additionalArguments: '--debug --docker kariae/symfony-php', snykInstallation: 'Snyk', snykTokenId: 'SNYK_TOKEN'
     }
 }
