@@ -2,7 +2,12 @@ node {
     stage('Checkout') {
         checkout scm
     }
-    
+    stage('Priviliges groups') {
+        sh 'groups'
+    }
+    stage('Priviliges groups whoami') {
+        sh 'groups `whoami`'
+    }
     /*stage('Download Snyk CLI') {
             sh '''
                 latest_version=v1.414.1
