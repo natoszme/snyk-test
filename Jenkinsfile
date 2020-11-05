@@ -1,4 +1,4 @@
-​final isThereAConexion( def host){    
+/*final isThereAConexion( def host){    
    try {
         def url = new URL(host)         
         url.getContent()
@@ -6,7 +6,7 @@
     } catch(Exception ex) {
         return false
     }
-}
+}*/
 node {
     stage('Checkout') {
         checkout scm
