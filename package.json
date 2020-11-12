@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/natoszme/snyk-test#readme",
   "dependencies": {
-    "alfred-workflow-nodejs": "^2.0.1",
     "bluebird": "^3.7.2",
     "lodash": "^4.17.20"
   }
