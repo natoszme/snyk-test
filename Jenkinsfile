@@ -16,12 +16,8 @@ node {
        if(isThereAConexion('https://snyk.io')){
           snykSecurity additionalArguments: '--debug', snykInstallation: 'Snyk', snykTokenId: 'SNYK_TOKEN'
        }else{
-          post {
-             unstable {
-               echo "Skipped, no connection to snyk.io"
-               echo 'I am unstable :/'
-            }
-          }
+          echo "Skipped, no connection to snyk.io"
+          currentBuild.result = 'UNSTABLE'
        }
     }
 }
